@@ -15,4 +15,4 @@ Abhijoy Saha ([@abjsaha](https://github.com/abjsaha))
 ![abjsaha photo](https://avatars1.githubusercontent.com/u/8252620?v=3&u=7764f95602ff2a37534c4d6d5daa5668d0ba0cc6&s=140)
 
 Jonathan Cheung ([@jcheung142](https://github.com/jcheung142))
-![jcheung142 photo](https://avatars1.githubusercontent.com/u/17169308?v=3&s=466)
+![jcheung142 photo](https://avatars3.githubusercontent.com/u/17169308?v=3&u=87f7ed438afb69fb0ea0d8d3509ad904c0b8dc9b&s=140)
