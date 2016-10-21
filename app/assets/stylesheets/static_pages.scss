@@ -14,8 +14,6 @@ body {
 
 #login-button {
 	margin: 0 auto;
-	text-align: center;
-	vertical-align: middle;
 	display: inline-block;
 }
 
@@ -30,4 +28,15 @@ body {
 	height: 100vh;
 	width: 100%;
 	background-color: #000000;
+}
+
+.footer {
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.footer ul {
+	list-style: none;
 }
