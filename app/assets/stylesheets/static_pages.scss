@@ -20,7 +20,11 @@ body {
 }
 
 #login-button {
-	margin: 0 auto;
+	display: block;
+	margin-top: 74ex;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .vert-helper {
@@ -45,18 +49,24 @@ body {
 
 .footer ul {
 	list-style: none;
+	padding-left: 0;
 }
 
 #logoHomePage {
-	height: 500px;
-	margin-bottom: -129px;
-	margin-top: 120px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-top: 28ex;
+  display: block;
 }
 
 .homepageOuterDiv {
-	text-align: center;
-	width: 100vw;
-  height: 100vh;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
 .homePageRow {
@@ -115,3 +125,43 @@ body {
 	top:1px;
 }
 
+.bb, .bb::before, .bb::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bb {
+  color: #69ca62;
+}
+.bb::before, .bb::after {
+  content: '';
+  z-index: -1;
+  margin: -5%;
+  box-shadow: inset 0 0 0 2px;
+  animation: clipMe 8s linear infinite;
+}
+.bb::before {
+    animation-delay: -4s;
+}
+.bb:hover::after, .bb:hover::before {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@keyframes clipMe {
+  0%,
+  100% {
+    clip: rect(0px, 220px, 2px, 0px);
+  }
+  25% {
+    clip: rect(0px, 2px, 220px, 0px);
+  }
+  50% {
+    clip: rect(218px, 220px, 220px, 0px);
+  }
+  75% {
+    clip: rect(0px, 220px, 220px, 218px);
+  }
+}
