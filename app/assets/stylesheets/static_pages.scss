@@ -35,6 +35,9 @@ body {
   overflow-x: hidden; 
 }
 
+
+/* ---------------------------------------- LANDING PAGE ---------------------------------------- */
+
 #login-button {
 	display: block;
 	margin-top: -16ex;
@@ -42,7 +45,14 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 36%;
+}
+
+#login-button-link {
   font-family: 'Ubuntu Mono', monospace;
+  color: white;
+  &:hover {
+    color: rgba(255, 255, 255, 0);   
+  }
 }
 
 .container-center {
@@ -83,15 +93,6 @@ body {
   margin-bottom: auto;
   margin-top: auto;
 }
-
-
-
-
-
-
-
-
-
 
 .plane {
 	z-index: -1;
@@ -421,4 +422,17 @@ body {
   outline-color: rgba(255, 255, 255, 0);
   outline-offset: 15px;
   text-shadow: 1px 1px 2px #427388;
+}
+
+
+/* ---------------------------------------- REGISTER PAGE ---------------------------------------- */
+
+.form-layout {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.form-item {
+  color:white;
 }
