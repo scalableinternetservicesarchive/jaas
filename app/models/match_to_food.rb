@@ -1,0 +1,2 @@
+class MatchToFood < ApplicationRecord
+end

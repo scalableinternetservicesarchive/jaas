@@ -1,0 +1,2 @@
+class UserToLabel < ApplicationRecord
+end
