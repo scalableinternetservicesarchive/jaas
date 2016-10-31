@@ -1,0 +1,15 @@
+<header class="header">
+	<div id="headerLogin">
+		<%= form_for(:user, :url => session_path(:user), id: "headerLoginForm") do |f| %>
+		  <%= f.text_field :email, id: "headerLoginEmail", placeholder: "Email ID" %>
+		  <%= f.password_field :password, id: "headerLoginPassword", placeholder: "Password" %>
+		  <%= f.check_box :remember_me, id: "headerLoginRememberMeCheckbox" %>
+		  <%= f.label :remember_me, id: "headerLoginRememberMeLabel"%>
+		  <%= f.submit 'Sign in', id: "headerLoginSignInButton", class: "btn btn-5" %>
+		  <%= link_to "Forgot your password?", new_password_path(:user), id: "headerLoginForgotPassword" %>
+		<% end %>
+	</div>
+	<div id="headerLogout">
+		
+	</div>
+</header>
