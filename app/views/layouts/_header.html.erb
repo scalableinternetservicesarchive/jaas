@@ -1,4 +1,9 @@
 <header class="header">
+	<% if user_signed_in? %>
+	<div id="headerLogout">
+		<%= f.submit 'Log out', id: "headerLogOutButton", class: "btn btn-5" %>
+	</div>
+	<% else %>
 	<div id="headerLogin">
 		<%= form_for(:user, :url => session_path(:user), id: "headerLoginForm") do |f| %>
 		  <%= f.text_field :email, id: "headerLoginEmail", placeholder: "Email ID" %>
@@ -9,7 +14,5 @@
 		  <%= link_to "Forgot your password?", new_password_path(:user), id: "headerLoginForgotPassword" %>
 		<% end %>
 	</div>
-	<div id="headerLogout">
-		
-	</div>
+	<% end %>
 </header>
