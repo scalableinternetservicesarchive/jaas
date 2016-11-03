@@ -35,7 +35,7 @@ body {
   padding: 0px;
   margin-bottom: 70px;
   overflow-x: hidden; 
-  overflow-y: auto;  
+  overflow-y: hidden;
 }
 
 .center {
@@ -52,9 +52,14 @@ body {
   font-family: 'Ubuntu Mono', monospace;
 }
 
+#register-button, #signin-button {
+  position: relative;
+  top: -50px;
+}
+
 .container-center {
 	text-align: center;
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 }
 
