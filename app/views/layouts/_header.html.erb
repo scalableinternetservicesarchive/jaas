@@ -1,18 +1,11 @@
 <header class="header">
+	<% if !current_page?(root_path) %>
+		<%= link_to 'Stranger Arranger', root_path %>
+	<% end %>
+
 	<% if user_signed_in? %>
 	<div id="headerLogout">
-		<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-	</div>
-	<% else %>
-	<div id="headerLogin">
-		<%= form_for(:user, :url => session_path(:user), id: "headerLoginForm") do |f| %>
-		  <%= f.text_field :email, id: "headerLoginEmail", placeholder: "Email ID" %>
-		  <%= f.password_field :password, id: "headerLoginPassword", placeholder: "Password" %>
-		  <%= f.check_box :remember_me, id: "headerLoginRememberMeCheckbox" %>
-		  <%= f.label :remember_me, id: "headerLoginRememberMeLabel"%>
-		  <%= f.submit 'Sign in', id: "headerLoginSignInButton", class: "btn btn-5" %>
-		  <%= link_to "Forgot your password?", new_password_path(:user), id: "headerLoginForgotPassword" %>
-		<% end %>
+		<%= link_to 'Logout', destroy_user_session_path, class: "btn btn-5", id: "headerLogOutButton", :method => :delete %>
 	</div>
 	<% end %>
 </header>
