@@ -3,34 +3,33 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
     <div class="form-group">
-      <%= label_tag :firstname, "First Name: ", class:"form-item"%>
-      <%= text_field_tag :firstname, "", class:"form-control"%>
-    </div>
-
-    <div class="form-group">
-      <%= label_tag :lastname, "Last Name: ", class:"form-item"%>
-      <%= text_field_tag :lastname, "", class:"form-control"%>
+      <%= label_tag :full_name, "Full Name: ", class:"form-item"%>
+      <%= f.text_field :name, autofocus: true, class:"form-control"%>
     </div>
 
     <div class="form-group">
       <%= label_tag :school, "School: ", class:"form-item"%>
-      <%= text_field_tag :school, "UCLA", class:"form-control"%>
+      <%= f.select:school, [["UC Berkeley", "UC Berkeley"], ["UC Davis", "UC Davis"],
+                             ["UC Irvine", "UC Irvine"], ["UCLA", "UCLA"],
+                             ["UC Merced", "UC Merced"], ["UC Riverside", "UC Riverside"],
+                             ["UC San Diego", "UC San Diego"], ["UC San Francisco", "UC San Francisco"],
+                             ["UC Santa Barbara", "UC Santa Barbara"], ["UC Santa Cruz", "UC Santa Cruz"]], {}, {:class => 'form-control'} %>
     </div>
 
     <div class="form-group">
       <%= f.label :email, class:"form-item" %><br />
-      <%= f.email_field :email, autofocus: true, class:"form-control" %>
+      <%= f.email_field :email, class:"form-control" %>
     </div>
 
     <div class="form-group">
-      <%= label_tag :phone, "Phone: ", class:"form-item"%>    
-      <%= text_field_tag :phone, "(000)-000-0000", class:"form-control" %>
-    </div>    
+      <%= label_tag :phone, "Phone: ", class:"form-item"%>
+      <%= f.text_field :phone, :value => "(000)-000-0000", class:"form-control" %>
+    </div>
 
     <div class="form-group">
       <%= label_tag :interests, "Interests:", class:"form-item"%>
-      <%= select_tag :interests, options_for_select([["exploring", "exploring"], ["fashion", "fashion"]], 1) %>
-    </div>        
+      <%= select_tag :interests, options_for_select([["Exploring", "exploring"], ["Fashion", "fashion"]], 1), class:"form-control" %>
+    </div>
 
     <div class="form-group">
       <%= f.label :password, class:"form-item" %>

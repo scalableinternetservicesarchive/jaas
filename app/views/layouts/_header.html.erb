@@ -1,7 +1,7 @@
 <header class="header">
 	<% if user_signed_in? %>
 	<div id="headerLogout">
-		<%= f.submit 'Log out', id: "headerLogOutButton", class: "btn btn-5" %>
+		<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 	</div>
 	<% else %>
 	<div id="headerLogin">
