@@ -2,22 +2,26 @@
 		<nav class="navbar navbar-static-top header">
 			<div class="container">
 				<div class="navbar-header">
-					<%= link_to 'Stranger Arranger', make_match_path, id:"header-logo", class:"navbar-brand" %>
+					<% if !current_page?(root_path) %>
+						<%= link_to 'Stranger Arranger', root_path, id:"header-logo", class:"navbar-brand" %>
+					<% else %>
+						<p class="navbar-brand noselect">Stranger Arranger</p>
+					<% end %>
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
 						<span class="sr-only"> Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>							
+						<span class="icon-bar"></span>
 					</button>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
 		          <ul class="nav navbar-nav pull-right">
 					<% if user_signed_in? %>
 					<li id="headerLogout">
-						<%= link_to 'Logout', destroy_user_session_path, class: "btn btn-5", 
+						<%= link_to 'Logout', destroy_user_session_path, class: "btn btn-5",
 						id: "headerLogOutButton", :method => :delete %>
 					</li>
-					<% end %>											            
+					<% end %>
 		          </ul>
 				</div>
 			</div>
