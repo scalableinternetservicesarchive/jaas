@@ -36,6 +36,7 @@ body {
   margin-bottom: 70px;
   overflow-x: hidden; 
   overflow-y: hidden;
+  color: white;
 }
 
 .center {
@@ -142,15 +143,6 @@ body {
   margin-bottom: auto;
   margin-top: auto;
 }
-
-
-
-
-
-
-
-
-
 
 .plane {
 	z-index: -1;
@@ -481,6 +473,12 @@ body {
   outline-offset: 15px;
   text-shadow: 1px 1px 2px #427388;
   color: #FFFFFF;
+}
+
+.btn-center {
+  margin: 0 auto;
+  width: auto;
+  display: block;
 }
 
 /* ---------------------------------- REGISTRATION PAGE ------------------------------------------- */
