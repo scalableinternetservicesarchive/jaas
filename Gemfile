@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'hover-rails'
+
 # Use devise for user login
 gem 'devise'
 # Use json to be able to deploy to AWS

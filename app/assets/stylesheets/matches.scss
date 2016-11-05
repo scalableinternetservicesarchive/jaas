@@ -1,3 +1,47 @@
 // Place all the styles related to the Matches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'hover';
+
+.panel {
+	margin: 0 auto;
+	width: 50%;
+}
+.panel, .list-group, .list-group-item {
+	background-color: #252120;
+}
+
+.panel-heading b {
+	display: block;
+}
+
+.form {
+	margin-bottom: 10px;
+}
+
+#match-profile-logo {
+	width: 30%;
+	height: 30%;
+	margin-bottom: 10px;
+	position: relative;
+	bottom: -10px;
+}
+
+.match-button {
+  margin: 0 auto;
+  width: auto;
+  display: inline-block;
+  color: #9d9d9d;
+  background-color: transparent;
+  &:hover {
+  	color: white;
+  }
+}
+
+.table td {
+	&:hover {
+		background-color: #464343;
+		transition: all 0.3s;
+		border-radius: 10px;		
+	}
+}
