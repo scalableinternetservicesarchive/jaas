@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'jquery-ui-rails'
+
 gem 'hover-rails'
 
 # Use devise for user login
