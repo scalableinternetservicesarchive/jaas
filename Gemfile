@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'resque'
+
 gem 'jquery-ui-rails'
 
 gem 'hover-rails'

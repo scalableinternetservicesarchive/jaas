@@ -5,6 +5,7 @@ class MatchesController < ApplicationController
 	end
 
 	def match_found
+		#@match = Match.find()
 	end
 
 	def match_not_found
