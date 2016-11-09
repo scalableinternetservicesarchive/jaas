@@ -13,21 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery-ui
 //= require_tree .
-
-  $( function() {
-    $( "#slider-range-mon" ).slider({
-      range: true,
-      min: 0,
-      max: 500,
-      values: [ 75, 300 ],
-      slide: function( event, ui ) {
-        $( "#availability-mon" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
-    });
-    $( "#availability-mon" ).val( "$" + $( "#slider-range-mon" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range-mon" ).slider( "values", 1 ) );
-  });
-
 
