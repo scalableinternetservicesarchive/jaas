@@ -18,14 +18,13 @@
 # end
 
 #used for debugging and outputting error
-set :environment, 'development'
 set :output, {:error => "log/cron_error_log.log", :standard => "log/cron_log.log"}
 
 #every :monday, :at => '1am' do
-#  runner "clear_matches"
+#  runner "Cleaner.clear_matches"
 #end
 
 every 1.minutes do
-	runner "Cleaner.clear_matches"
+	rake "clear_matches"
 end
 # Learn more: http://github.com/javan/whenever
