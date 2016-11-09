@@ -1,6 +1,5 @@
 class Cleaner
-	@queue = :delete
-	def self.perform()
-		
+	def self.remove()
+		Match.update_all(status:"finished")		
 	end
 end

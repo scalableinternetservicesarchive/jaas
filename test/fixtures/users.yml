@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  school: MyString
-  matchId: 1
-  email: MyString
-  phone: MyString
+  id: 1
+  name: "Jonathan Cheung"
+  school: "UC Berkeley"
+  matchId: nil
+  email: "jcheung142@gmail.com"
+  phone: "(000)-000-0000"
 
 two:
-  name: MyString
-  school: MyString
-  matchId: 1
-  email: MyString
-  phone: MyString
+  id: 2
+  name: "Joy"
+  school: "UC Berkeley"
+  matchId: nil
+  email: "joy@example.com"
+  phone: "(000)-000-0000"

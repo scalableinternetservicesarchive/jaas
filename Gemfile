@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'resque'
+gem 'whenever', require: false
 
 gem 'jquery-ui-rails'
 
