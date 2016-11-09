@@ -28,7 +28,7 @@
 }
 
 .match-button {
-  margin: 0 auto;
+  margin: 25px;
   width: auto;
   display: inline-block;
   color: #9d9d9d;
@@ -40,13 +40,27 @@
 
 .time-availability {
 	border: 1px solid white;
-	height: 200px;
+	height: 125px;
 }
 
 .table td {
 	&:hover {
 		background-color: #464343;
 		transition: all 0.3s;
-		border-radius: 10px;		
+		border-radius: 10px;
 	}
+}
+
+.vertical-center {
+	display: flex;
+  align-items: center;
+}
+
+.slider-selection {
+	background: #054f74;
+}
+
+.slider-container {
+	margin-top: 30px;
+	margin-bottom: 25px;
 }

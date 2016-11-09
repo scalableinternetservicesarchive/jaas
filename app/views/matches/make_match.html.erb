@@ -1,83 +1,147 @@
 <div class="container">
-	<h2> MAKE A MATCH! </h2>
-	<form class="form">
-		<div class="row text-center">
-			<div class="col-sm-3">
-			Monday
-			</div>
-			<div class="col-sm-3">
-			Tuesday
-			</div>
-			<div class="col-sm-3">
-			Wednesday
-			</div>
-			<div class="col-sm-3">
-			Thursday
-			</div>									
-		</div>
+  <h2>MATCH ME!</h2>
 
-		<div class="row text-center">
-			<div class="col-sm-3 time-availability">
-				<label> Availability:
-				<input type="text" id="availability-mon" readonly style="border:0; color:#f6931f; font-weight:bold;">
-				</label>
-				<div id="slider-range-mon"></div>							
-			</div>
-			<div class="col-sm-3 time-availability">			
-				<label> Availability:
-				<input type="text" id="availability-tues" readonly style="border:0; color:#f6931f; font-weight:bold;">
-				</label>
-				<div id="slider-range-tues"></div>						 
-			</div>
-			<div class="col-sm-3 time-availability">			
-				<label> Availability:
-				<input type="text" id="availability-wed" readonly style="border:0; color:#f6931f; font-weight:bold;">
-				</label>
-				<div id="slider-range-wed"></div>						
-			</div>
-			<div class="col-sm-3 time-availability">						
-				<label> Availability:
-				<input type="text" id="availability-thur" readonly style="border:0; color:#f6931f; font-weight:bold;">
-				</label>
-				<div id="slider-range-thur"></div>														
-			</div>
-		</div>
-		<div class="row text-center">
-			<div class="col-sm-4">
-			Friday
-			</div>
-			<div class="col-sm-4">
-			Saturday
-			</div>
-			<div class="col-sm-4">
-			Sunday
-			</div>									
-		</div>
+  <br />
+  <h4>Availability</h4>
+  <div id="monday-friday-time" class="row text-center">
+    <div id="monday-time" class="col-md-6 time-availability vertical-center">
+      <div class="col-md-3 text-right">Monday:</div>
+      <div class="col-md-3 checkbox">
+        <label>
+          <%= check_box_tag "mondayCheckbox" %>
+          Unavailable
+        </label>
+      </div>
+      <div class="col-md-6">
+        <p>Times available:</p>
+        <div class="slider-container">
+          <input id="monday-slider" class="availability-slider" style="width:100%"/>
+        </div>
+      </div>
+    </div>
+    <div id="friday-time" class="col-md-6 time-availability vertical-center">
+      <div class="col-md-3 text-right">Friday:</div>
+      <div class="col-md-3 checkbox">
+        <label>
+          <%= check_box_tag "fridayCheckbox" %>
+          Unavailable
+        </label>
+      </div>
+      <div class="col-md-6">
+        <p>Times available:</p>
+        <div class="slider-container">
+          <input id="friday-slider" class="availability-slider" style="width:100%"/>
+        </div>
+      </div>
+    </div>
+  </div>
 
-		<div class="row text-center">
-			<div class="col-sm-4">
-				<label> Availability:
-				<input type="text" id="availability-fri" readonly style="border:0; color:#f6931f; font-weight:bold;">
-				</label>
-				<div id="slider-range-fri"></div>	
-			</div>
-			<div class="col-sm-4">
-				<label> Availability:
-				<input type="text" id="availability-sat" readonly style="border:0; color:#f6931f; font-weight:bold;">
-				</label>
-				<div id="slider-range-sat"></div>
-			</div>
+  <div id="tuesday-saturday-time" class="row text-center">
+    <div id="tuesday-time" class="col-md-6 time-availability vertical-center">
+      <div class="col-md-3 text-right">Tuesday:</div>
+      <div class="col-md-3 checkbox">
+        <label>
+          <%= check_box_tag "tuesdayCheckbox" %>
+          Unavailable
+        </label>
+      </div>
+      <div class="col-md-6">
+        <p>Times available:</p>
+        <div class="slider-container">
+          <input id="tuesday-slider" class="availability-slider" style="width:100%"/>
+        </div>
+      </div>
+    </div>
+    <div id="saturday-time" class="col-md-6 time-availability vertical-center">
+      <div class="col-md-3 text-right">Saturday:</div>
+      <div class="col-md-3 checkbox">
+        <label>
+          <%= check_box_tag "saturdayCheckbox" %>
+          Unavailable
+        </label>
+      </div>
+      <div class="col-md-6">
+        <p>Times available:</p>
+        <div class="slider-container">
+          <input id="saturday-slider" class="availability-slider" style="width:100%"/>
+        </div>
+      </div>
+    </div>
+  </div>
 
-			<div class="col-sm-4">
-				<label> Availability:
-				<input type="text" id="availability-sun" readonly style="border:0; color:#f6931f; font-weight:bold;">
-				</label>
-				<div id="slider-range-sun"></div>						
-			</div>				
-		</div>		
+  <div id="wednesday-sunday-time" class="row text-center">
+    <div id="wednesday-time" class="col-md-6 time-availability vertical-center">
+      <div class="col-md-3 text-right">Wednesday:</div>
+      <div class="col-md-3 checkbox">
+        <label>
+          <%= check_box_tag "wednesdayCheckbox" %>
+          Unavailable
+        </label>
+      </div>
+      <div class="col-md-6">
+        <p>Times available:</p>
+        <div class="slider-container">
+          <input id="wednesday-slider" class="availability-slider" style="width:100%"/>
+        </div>
+      </div>
+    </div>
+    <div id="sunday-time" class="col-md-6 time-availability vertical-center">
+      <div class="col-md-3 text-right">Sunday:</div>
+      <div class="col-md-3 checkbox">
+        <label>
+          <%= check_box_tag "sundayCheckbox" %>
+          Unavailable
+        </label>
+      </div>
+      <div class="col-md-6">
+        <p>Times available:</p>
+        <div class="slider-container">
+          <input id="sunday-slider" class="availability-slider" style="width:100%"/>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<div class="text-center">
-		<button type="submit" class="btn hvr-outline-out match-button"> Match </button>
-	</div>
-	</form>
+  <div id="thursday-only-time" class="row text-center">
+    <div id="thursday-time" class="col-md-6 time-availability vertical-center">
+      <div class="col-md-3 text-right">Thursday:</div>
+      <div class="col-md-3 checkbox">
+        <label>
+          <%= check_box_tag "thursdayCheckbox" %>
+          Unavailable
+        </label>
+      </div>
+      <div class="col-md-6">
+        <p>Times available:</p>
+        <div class="slider-container">
+          <input id="thursday-slider" class="availability-slider" style="width:100%"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <h4>Cuisines I Like</h4>
+  <div id="cuisine-select">
+    <select multiple class="form-control" size="10">
+      <option>American</option>
+      <option>Chinese</option>
+      <option>Mexican</option>
+      <option>Italian</option>
+      <option>Japanese</option>
+      <option>Greek</option>
+      <option>French</option>
+      <option>Thai</option>
+      <option>Spanish</option>
+      <option>Indian</option>
+      <option>Mediterranean</option>
+      <option>Korean</option>
+      <option>Vietnamese</option>
+    </select>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn hvr-outline-out match-button"> Match </button>
+  </div>
+  </form>
 </div>

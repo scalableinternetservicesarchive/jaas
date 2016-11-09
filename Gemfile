@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'resque'
+gem 'bootstrap-slider-rails'
 
-gem 'jquery-ui-rails'
+gem 'resque'
 
 gem 'hover-rails'
 
