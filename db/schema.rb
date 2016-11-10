@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109014847) do
+ActiveRecord::Schema.define(version: 20161110185758) do
 
   create_table "foods", force: :cascade do |t|
     t.string   "name"
@@ -34,10 +34,23 @@ ActiveRecord::Schema.define(version: 20161109014847) do
   create_table "matches", force: :cascade do |t|
     t.integer  "user1Id"
     t.integer  "user2Id"
-    t.string   "time"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "mondayStartTime"
+    t.integer  "mondayEndTime"
+    t.integer  "tuesdayStartTime"
+    t.integer  "tuesdayEndTime"
+    t.integer  "wednesdayStartTime"
+    t.integer  "wednesdayEndTime"
+    t.integer  "thursdayStartTime"
+    t.integer  "thursdayEndTime"
+    t.integer  "fridayStartTime"
+    t.integer  "fridayEndTime"
+    t.integer  "saturdayStartTime"
+    t.integer  "saturdayEndTime"
+    t.integer  "sundayStartTime"
+    t.integer  "sundayEndTime"
   end
 
   create_table "user_to_labels", force: :cascade do |t|
