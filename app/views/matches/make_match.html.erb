@@ -68,7 +68,6 @@
       </div>
     </div>
   </div>
-
   <div id="wednesday-sunday-time" class="row text-center">
     <div id="wednesday-time" class="col-md-6 time-availability vertical-center">
       <div class="col-md-3 text-right">Wednesday:</div>
@@ -144,4 +143,8 @@
     <button type="submit" class="btn hvr-outline-out match-button"> Match </button>
   </div>
   </form>
+	<%= Match.all.each { 
+			|match|
+			puts match.inspect
+		} %>
 </div>
