@@ -67,6 +67,17 @@ function handleAvailabilityCheckbox(checkbox, slider) {
 
 function handleMatchButton() {
     $("#match-button").click(function() {
+        var cuisines = [];
+        $('#cuisine-select :selected').each(function(i, selected){
+            cuisines[i] = $(selected).val();
+        });
+        
+        if (cuisines.length == 0) {
+            alert("Please choose at least one cuisine.");
+            return;
+        }
+
+        var isAvailable = false;
         var mondayAvailable = false;
         var tuesdayAvailable = false;
         var wednesdayAvailable = false;
@@ -84,38 +95,45 @@ function handleMatchButton() {
         var sundayTimes = [];
 
         if(!$("#monday-checkbox").is(':checked')) {
+            isAvailable = true;
             mondayAvailable = true;
             mondayTimes = $("#monday-slider").slider('getValue');
         }
         if(!$("#tuesday-checkbox").is(':checked')) {
+            isAvailable = true;
             tuesdayAvailable = true;
             tuesdayTimes = $("#tuesday-slider").slider('getValue');
         }
         if(!$("#wednesday-checkbox").is(':checked')) {
+            isAvailable = true;
             wednesdayAvailable = true;
             wednesdayTimes = $("#wednesday-slider").slider('getValue');
         }
         if(!$("#thursday-checkbox").is(':checked')) {
+            isAvailable = true;
             thursdayAvailable = true;
             thursdayTimes = $("#thursday-slider").slider('getValue');
         }
         if(!$("#friday-checkbox").is(':checked')) {
+            isAvailable = true;
             fridayAvailable = true;
             fridayTimes = $("#friday-slider").slider('getValue');
         }
         if(!$("#saturday-checkbox").is(':checked')) {
+            isAvailable = true;
             saturdayAvailable = true;
             saturdayTimes = $("#saturday-slider").slider('getValue');
         }
         if(!$("#sunday-checkbox").is(':checked')) {
+            isAvailable = true;
             sundayAvailable = true;
             sundayTimes = $("#sunday-slider").slider('getValue');
         }
-
-        var cuisines = [];
-        $('#cuisine-select :selected').each(function(i, selected){
-            cuisines[i] = $(selected).val();
-        });
+        
+        if (!isAvailable) {
+            alert("Please have at least one available day.");
+            return;
+        }
 
         $.ajax({
             type: 'POST',
