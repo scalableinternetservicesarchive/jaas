@@ -8,7 +8,7 @@
       <div class="col-md-3 text-right">Monday:</div>
       <div class="col-md-3 checkbox">
         <label>
-          <%= check_box_tag "mondayCheckbox" %>
+          <%= check_box_tag "monday-checkbox" %>
           Unavailable
         </label>
       </div>
@@ -23,7 +23,7 @@
       <div class="col-md-3 text-right">Friday:</div>
       <div class="col-md-3 checkbox">
         <label>
-          <%= check_box_tag "fridayCheckbox" %>
+          <%= check_box_tag "friday-checkbox" %>
           Unavailable
         </label>
       </div>
@@ -41,7 +41,7 @@
       <div class="col-md-3 text-right">Tuesday:</div>
       <div class="col-md-3 checkbox">
         <label>
-          <%= check_box_tag "tuesdayCheckbox" %>
+          <%= check_box_tag "tuesday-checkbox" %>
           Unavailable
         </label>
       </div>
@@ -56,7 +56,7 @@
       <div class="col-md-3 text-right">Saturday:</div>
       <div class="col-md-3 checkbox">
         <label>
-          <%= check_box_tag "saturdayCheckbox" %>
+          <%= check_box_tag "saturday-checkbox" %>
           Unavailable
         </label>
       </div>
@@ -73,7 +73,7 @@
       <div class="col-md-3 text-right">Wednesday:</div>
       <div class="col-md-3 checkbox">
         <label>
-          <%= check_box_tag "wednesdayCheckbox" %>
+          <%= check_box_tag "wednesday-checkbox" %>
           Unavailable
         </label>
       </div>
@@ -88,7 +88,7 @@
       <div class="col-md-3 text-right">Sunday:</div>
       <div class="col-md-3 checkbox">
         <label>
-          <%= check_box_tag "sundayCheckbox" %>
+          <%= check_box_tag "sunday-checkbox" %>
           Unavailable
         </label>
       </div>
@@ -106,7 +106,7 @@
       <div class="col-md-3 text-right">Thursday:</div>
       <div class="col-md-3 checkbox">
         <label>
-          <%= check_box_tag "thursdayCheckbox" %>
+          <%= check_box_tag "thursday-checkbox" %>
           Unavailable
         </label>
       </div>
@@ -121,30 +121,30 @@
 
   <br />
   <h4>Cuisines I Like</h4>
-  <div id="cuisine-select">
-    <select multiple class="form-control" size="10">
-      <option>American</option>
-      <option>Chinese</option>
-      <option>Mexican</option>
-      <option>Italian</option>
-      <option>Japanese</option>
-      <option>Greek</option>
-      <option>French</option>
-      <option>Thai</option>
-      <option>Spanish</option>
-      <option>Indian</option>
-      <option>Mediterranean</option>
-      <option>Korean</option>
-      <option>Vietnamese</option>
+  <div>
+    <select multiple class="form-control" size="10" id="cuisine-select">
+      <option value="1">American</option>
+      <option value="2">Chinese</option>
+      <option value="3">Mexican</option>
+      <option value="4">Italian</option>
+      <option value="5">Japanese</option>
+      <option value="6">Greek</option>
+      <option value="7">French</option>
+      <option value="8">Thai</option>
+      <option value="9">Spanish</option>
+      <option value="10">Indian</option>
+      <option value="11">Mediterranean</option>
+      <option value="12">Korean</option>
+      <option value="13">Vietnamese</option>
     </select>
   </div>
 
   <div class="text-center">
-    <button type="submit" class="btn hvr-outline-out match-button"> Match </button>
+    <button type="button" class="btn hvr-outline-out match-button" id="match-button"> Match </button>
   </div>
-  </form>
-	<%= Match.all.each { 
+
+	<!--<%= Match.all.each {
 			|match|
 			puts match.inspect
-		} %>
+		} %>-->
 </div>

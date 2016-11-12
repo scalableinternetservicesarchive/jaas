@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => :registrations }
   root 'static_pages#landing'
+  post '/match_request', to: 'matches#match_request'
   get '/make_match', to: 'matches#make_match'
   get '/match_found', to: 'matches#match_found'
   get '/match_not_found', to: 'matches#match_not_found'
