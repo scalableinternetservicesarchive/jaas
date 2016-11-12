@@ -2,6 +2,7 @@ class MatchesController < ApplicationController
 	before_action :authenticate_user!
 
 	def make_match
+		@day_of_week = Time.now.wday # sunday = 0, monday = 1, ...
 	end
 
 	def match_found

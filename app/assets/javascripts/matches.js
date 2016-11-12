@@ -2,15 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 $(document).on('turbolinks:load', function() {
-    handleAvailabilityCheckbox("#monday-checkbox", "#monday-slider");
-    handleAvailabilityCheckbox("#tuesday-checkbox", "#tuesday-slider");
-    handleAvailabilityCheckbox("#wednesday-checkbox", "#wednesday-slider");
-    handleAvailabilityCheckbox("#thursday-checkbox", "#thursday-slider");
-    handleAvailabilityCheckbox("#friday-checkbox", "#friday-slider");
-    handleAvailabilityCheckbox("#saturday-checkbox", "#saturday-slider");
-    handleAvailabilityCheckbox("#sunday-checkbox", "#sunday-slider");
-    handleMatchButton();
-
     $(".availability-slider").slider({
         min: 0,
         max: 720,
@@ -21,6 +12,16 @@ $(document).on('turbolinks:load', function() {
         tooltip_split: true,
         formatter: minutesToTime
     });
+
+    handleDayOfWeek();
+    handleAvailabilityCheckbox("#monday-checkbox", "#monday-slider");
+    handleAvailabilityCheckbox("#tuesday-checkbox", "#tuesday-slider");
+    handleAvailabilityCheckbox("#wednesday-checkbox", "#wednesday-slider");
+    handleAvailabilityCheckbox("#thursday-checkbox", "#thursday-slider");
+    handleAvailabilityCheckbox("#friday-checkbox", "#friday-slider");
+    handleAvailabilityCheckbox("#saturday-checkbox", "#saturday-slider");
+    handleAvailabilityCheckbox("#sunday-checkbox", "#sunday-slider");
+    handleMatchButton();
 });
 
 function minutesToTime(minutes) {
@@ -40,13 +41,26 @@ function minutesToTime(minutes) {
     return output;
 }
 
+function handleDayOfWeek() {
+    var checkboxes = ["#monday-checkbox", "#tuesday-checkbox", "#wednesday-checkbox",
+        "#thursday-checkbox", "#friday-checkbox", "#saturday-checkbox", "#sunday-checkbox"];
+    var sliders = ["#monday-slider", "#tuesday-slider", "#wednesday-slider",
+        "#thursday-slider", "#friday-slider", "#saturday-slider", "#sunday-slider"];
+    var dayOfWeek = $('#day-of-week').attr('data');
+
+    for (i = 0; i < dayOfWeek; i++) {
+        $(checkboxes[i]).prop("checked", true).prop("disabled", true);
+        $(sliders[i]).slider('disable');
+    }
+}
+
 function handleAvailabilityCheckbox(checkbox, slider) {
     $(checkbox).click(function() {
         if($(this).is(':checked')) {
-            $(slider).slider('disable')
+            $(slider).slider('disable');
         }
         else {
-            $(slider).slider('enable')
+            $(slider).slider('enable');
         }
     });
 }

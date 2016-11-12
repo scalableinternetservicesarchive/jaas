@@ -1,4 +1,6 @@
 <div class="container">
+  <%= content_tag :div, '', id: 'day-of-week', data: @day_of_week %>
+
   <h2>MATCH ME!</h2>
 
   <br />
@@ -143,8 +145,4 @@
     <button type="button" class="btn hvr-outline-out match-button" id="match-button"> Match </button>
   </div>
 
-	<!--<%= Match.all.each {
-			|match|
-			puts match.inspect
-		} %>-->
 </div>
