@@ -21,4 +21,4 @@
 .byebug_history
 
 # Gmail credentials
-.env
+# .env
