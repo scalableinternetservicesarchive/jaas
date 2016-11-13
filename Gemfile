@@ -47,6 +47,8 @@ gem 'jbuilder', '~> 2.5'
 #
 # Bootstrap
 gem 'bootstrap-sass', '3.3.6'
+# For environment variables
+gem 'dotenv-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
