@@ -5,14 +5,26 @@
 
 .panel {
 	margin: 0 auto;
-	width: 50%;
-}
-.panel, .list-group, .list-group-item {
-	background-color: #252120;
+	width: 60%;
+	background-color: #252120;	
 }
 
 .panel-heading b {
 	display: block;
+}
+.panel-heading, .panel-body {
+	padding: 0px;
+}
+.list-group, .list-group-item {
+	background-color: #252120;
+	border: none;
+}
+.list-group-item {
+	&:hover {
+		background-color: #464343;
+		transition: all 0.3s;
+		border-radius: 10px;
+	}
 }
 
 .form {
@@ -43,13 +55,6 @@
 	height: 125px;
 }
 
-.table td {
-	&:hover {
-		background-color: #464343;
-		transition: all 0.3s;
-		border-radius: 10px;
-	}
-}
 
 .vertical-center {
 	display: flex;

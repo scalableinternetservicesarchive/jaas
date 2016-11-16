@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get '/make_match', to: 'matches#make_match'
   get '/match_found', to: 'matches#match_found'
   get '/match_not_found', to: 'matches#match_not_found'
+  get '/index', to: 'matches#index'
 end

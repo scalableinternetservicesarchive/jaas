@@ -5,25 +5,57 @@
 			<img src="./images/default-profile.jpg" id="match-profile-logo" class="img-circle">								
 		</div>
 		<div class="panel-body text-center">
-			<table class="table text-center">
-				<thead>
-					<tr>
-						<th>Person's Name</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Available Times:</td>
-					</tr>
-					<tr>
-						<td>Common Interests:</td>
-					</tr>
-					<tr>
-						<td>Food:</td>
-					</tr>															
-				</tbody>
-			</table>
+			<ul class="list-group">
 
+				<li class="list-group-item">
+					<h4 class="list-group-item-heading"> Availability </h4>
+					<div class="row list-group-item-text">
+						<%=					
+							if !@match_request.mondayStartTime.nil?
+								monday = "Monday: #{@match_request.mondayStartTime} - #{@match_request.mondayEndTime}"
+								content_tag(:div, monday, class:"col-sm-12")							
+							end									
+						%>
+						<%=
+							if !@match_request.tuesdayStartTime.nil?
+								tuesday = "Tuesday: #{@match_request.tuesdayStartTime} - #{@match_request.tuesdayEndTime}"
+								content_tag(:div, tuesday, class:"col-sm-12")								
+							end							
+						%>
+						<%=					
+							if !@match_request.wednesdayStartTime.nil?
+								wednesday = "Wednesday: #{@match_request.wednesdayStartTime} - #{@match_request.wednesdayEndTime}"
+								content_tag(:div, wednesday, class:"col-sm-12")								
+							end							
+						%>
+						<%=					
+							if !@match_request.thursdayStartTime.nil?
+								thursday = "Thursday: #{@match_request.thursdayStartTime} - #{@match_request.thursdayEndTime}"
+								content_tag(:div, thursday, class:"col-sm-12")								
+							end							
+						%>
+						<%=					
+							if !@match_request.fridayStartTime.nil?
+								friday = "Friday: #{@match_request.thursdayStartTime} - #{@match_request.thursdayEndTime}"
+								content_tag(:div, friday, class:"col-sm-12")								
+							end							
+						%>
+						<%=					
+							if !@match_request.saturdayStartTime.nil?
+								saturday = "Saturday: #{@match_request.saturdayStartTime} - #{@match_request.saturdayEndTime}"
+								content_tag(:div, saturday, class:"col-sm-12")								
+							end							
+						%>
+						<%=					
+							if !@match_request.sundayStartTime.nil?
+								sunday = "Sunday: #{@match_request.sundayStartTime} - #{@match_request.sundayEndTime}"
+								content_tag(:div, sunday, class:"col-sm-12")								
+							end							
+						%>
+					</div>
+				</li>
+
+			</ul>
 		</div>
 	</div>
 </div>
