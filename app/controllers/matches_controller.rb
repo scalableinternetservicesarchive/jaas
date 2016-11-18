@@ -1,22 +1,21 @@
 class MatchesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @match_request = Match.where(user1Id: current_user.id).where.not(status: 'archived')
-    @current_match = @match_request.first   
-    if @match_request.empty? #user logs in after sunday and all old matches have been archived
+    @current_match = Match.where(user1Id: current_user.id).where.not(status: 'archived').first
+    @current_match = Match.where(user2Id: current_user.id).where.not(status: 'archived').first if @current_match == nil
+
+    if @current_match == nil #user logs in after sunday and all old matches have been archived
       destination = 'make_match'
     elsif @current_match.status=='finished'
     	destination = 'match_found'
-    elsif @current_match.status=='pending'
+    else
     	destination = 'match_not_found'
-    else #make next match for next week
-      @match_request.user2Id.nil? ? destination = 'match_not_found' : destination = 'match_found'
     end
-	redirect_to request.url.sub('index', destination)  
+    redirect_to request.url.sub('index', destination)
   end
 
   def make_match
-    @day_of_week = Time.now.wday # sunday = 0, monday = 1, ...       
+    @day_of_week = Time.now.wday # sunday = 0, monday = 1, ...
   end
 
   def match_found
@@ -25,21 +24,61 @@ class MatchesController < ApplicationController
   end
 
   def match_not_found
-    @match_request = Match.where(user1Id: current_user.id).where.not(status: 'archived')
-    @current_match = @match_request.first   
+    @current_match = Match.where(user1Id: current_user.id).where.not(status: 'archived').first
+    @current_match = Match.where(user2Id: current_user.id).where.not(status: 'archived').first if @current_match == nil
+    @status = @current_match.status
+
+    if @current_match.mondayStartTime != nil
+      @mondayStartTime = minutesToTime(@current_match.mondayStartTime)
+      @mondayEndTime = minutesToTime(@current_match.mondayEndTime)
+    end
+    if @current_match.tuesdayStartTime != nil
+      @tuesdayAvailable = true
+      @tuesdayStartTime = minutesToTime(@current_match.tuesdayStartTime)
+      @tuesdayEndTime = minutesToTime(@current_match.tuesdayEndTime)
+    end
+    if @current_match.wednesdayStartTime != nil
+      @wednesdayAvailable = true
+      @wednesdayStartTime = minutesToTime(@current_match.wednesdayStartTime)
+      @wednesdayEndTime = minutesToTime(@current_match.wednesdayEndTime)
+    end
+    if @current_match.thursdayStartTime != nil
+      @thursdayAvailable = true
+      @thursdayStartTime = minutesToTime(@current_match.thursdayStartTime)
+      @thursdayEndTime = minutesToTime(@current_match.thursdayEndTime)
+    end
+    if @current_match.fridayStartTime != nil
+      @fridayAvailable = true
+      @fridayStartTime = minutesToTime(@current_match.fridayStartTime)
+      @fridayEndTime = minutesToTime(@current_match.fridayEndTime)
+    end
+    if @current_match.saturdayStartTime != nil
+      @saturdayStartTime = minutesToTime(@current_match.saturdayStartTime)
+      @saturdayEndTime = minutesToTime(@current_match.saturdayEndTime)
+    end
+    if @current_match.sundayStartTime != nil
+      @sundayAvailable = true
+      @sundayStartTime = minutesToTime(@current_match.sundayStartTime)
+      @sundayEndTime = minutesToTime(@current_match.sundayEndTime)
+    end
+
+    @cuisines_list = Array.new
+    MatchToFood.where(matchId: @current_match.id).find_each do |match_to_food|
+      @cuisines_list << Food.where(id: match_to_food.foodId).first.name
+    end
   end
 
   def match_request
     # check if user already submitted a request
-    user1_matches = Match.pending_or_finished.with_user1(current_user.id.to_s).size
-    user2_matches = Match.pending_or_finished.with_user2(current_user.id.to_s).size
+    user1_matches = Match.not_archived.with_user1(current_user.id.to_s).size
+    user2_matches = Match.not_archived.with_user2(current_user.id.to_s).size
     if user1_matches > 0 || user2_matches > 0
       return head(:bad_request)
     end
-    
+
     # get all pending matches, from same school, and with at least one food in common
     matches = Match.pending.with_school(current_user.school).with_foods(params[:cuisines])
-    
+
     # get a match that at least has one time in common
     picked_match = nil
     matches.each do |match|
@@ -142,19 +181,19 @@ class MatchesController < ApplicationController
         end
       end
     end
-    
+
     if picked_match == nil
       create_new_match
     else
       # modify existing picked_match
       picked_match.status = 'finished'
       picked_match.user2Id = current_user.id
-      
+
       # update similar foods
       MatchToFood.where(matchId: picked_match.id).find_each do |food|
         food.destroy unless params[:cuisines].include? food.foodId.to_s
       end
-      
+
       # update common times
       if picked_match.mondayStartTime != nil && params[:mondayAvailable] == 'true'
         if picked_match.mondayStartTime == params[:mondayTimes][0].to_i
@@ -237,20 +276,20 @@ class MatchesController < ApplicationController
       picked_match.save
     end
   end
-  
+
   private
-    
+
     def create_new_match
       # if no existing matches, create new one
       new_match = Match.new
       new_match.user1Id = current_user.id
-      
+
       if Time.now.wday == 0
         new_match.status = 'next_week'
       else
         new_match.status = 'pending'
       end
-    
+
       if params[:mondayAvailable] == 'true'
         new_match.mondayStartTime = params[:mondayTimes][0]
         new_match.mondayEndTime = params[:mondayTimes][1]
@@ -286,5 +325,16 @@ class MatchesController < ApplicationController
         new_match_to_food.save
       end
     end
-    
+
+    def minutesToTime(minutes)
+      hours = (minutes / 60).floor + 8
+      leftoverMinutes = minutes % 60
+      if hours < 12
+        output = hours.to_s + ":" + leftoverMinutes.to_s.rjust(2, '0')  + " AM"
+      elsif hours == 12
+        output = hours.to_s + ":" + leftoverMinutes.to_s.rjust(2, '0') + " PM"
+      else
+        output = (hours - 12).to_s + ":" + leftoverMinutes.to_s.rjust(2, '0') + " PM";
+      end
+    end
 end

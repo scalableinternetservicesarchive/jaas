@@ -3,9 +3,60 @@
 		<h1> Sorry, you currently don't have any matches!</h1>
 		<h4> Check back soon! :) </h4>
 	</div>
+	<div>
+		Your request details: <br/>
+		<p>Availability:</p>
+		<%=
+			if !@current_match.mondayStartTime.nil?
+				monday = "Monday: #{@mondayStartTime} - #{@mondayEndTime}"
+				content_tag(:div, monday, class:"col-sm-12")
+			end
+		%>
+		<%=
+			if !@current_match.tuesdayStartTime.nil?
+				tuesday = "Tuesday: #{@tuesdayStartTime} - #{@tuesdayEndTime}"
+				content_tag(:div, tuesday, class:"col-sm-12")
+			end
+		%>
+		<%=
+			if !@current_match.wednesdayStartTime.nil?
+				wednesday = "Wednesday: #{@wednesdayStartTime} - #{@wednesdayEndTime}"
+				content_tag(:div, wednesday, class:"col-sm-12")
+			end
+		%>
+		<%=
+			if !@current_match.thursdayStartTime.nil?
+				thursday = "Thursday: #{@thursdayStartTime} - #{@thursdayEndTime}"
+				content_tag(:div, thursday, class:"col-sm-12")
+			end
+		%>
+		<%=
+			if !@current_match.fridayStartTime.nil?
+				friday = "Friday: #{@fridayStartTime} - #{@fridayEndTime}"
+				content_tag(:div, friday, class:"col-sm-12")
+			end
+		%>
+		<%=
+			if !@current_match.saturdayStartTime.nil?
+				saturday = "Saturday: #{@saturdayStartTime} - #{@saturdayEndTime}"
+				content_tag(:div, saturday, class:"col-sm-12")
+			end
+		%>
+		<%=
+			if !@current_match.sundayStartTime.nil?
+				sunday = "Sunday: #{@sundayStartTime} - #{@sundayEndTime}"
+				content_tag(:div, sunday, class:"col-sm-12")
+			end
+		%>
+		<br/>
+		<p>Cuisines:</p>
+		<% @cuisines_list.each do |cuisine| %>
+				<%= cuisine %><br/>
+		<% end %>
+	</div>
 	<% if Time.now.wday == 0 %>
 	<%=	 link_to('New Match', make_match_path,
-		 class:"btn match-button hvr-outline-out", style: 'width: auto', title:"Make a new match for next week!", 
+		 class:"btn match-button hvr-outline-out", style: 'width: auto', title:"Make a new match for next week!",
 		 data: {toggle: 'tooltip', placement: 'left'})
 	%>
 	<%end%>
