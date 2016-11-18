@@ -19,8 +19,53 @@ class MatchesController < ApplicationController
   end
 
   def match_found
-    @match_request = Match.where(user1Id: current_user.id).where.not(status: 'archived')
-    @current_match = @match_request.first
+    @current_match = Match.where(user1Id: current_user.id).where.not(status: 'archived').first
+
+    if @current_match == nil
+      @current_match = Match.where(user2Id: current_user.id).where.not(status: 'archived').first
+      @other_user = User.find(@current_match.user1Id)
+    else
+      @other_user = User.find(@current_match.user2Id)
+    end
+
+    if @current_match.mondayStartTime != nil
+      @mondayStartTime = minutesToTime(@current_match.mondayStartTime)
+      @mondayEndTime = minutesToTime(@current_match.mondayEndTime)
+    end
+    if @current_match.tuesdayStartTime != nil
+      @tuesdayAvailable = true
+      @tuesdayStartTime = minutesToTime(@current_match.tuesdayStartTime)
+      @tuesdayEndTime = minutesToTime(@current_match.tuesdayEndTime)
+    end
+    if @current_match.wednesdayStartTime != nil
+      @wednesdayAvailable = true
+      @wednesdayStartTime = minutesToTime(@current_match.wednesdayStartTime)
+      @wednesdayEndTime = minutesToTime(@current_match.wednesdayEndTime)
+    end
+    if @current_match.thursdayStartTime != nil
+      @thursdayAvailable = true
+      @thursdayStartTime = minutesToTime(@current_match.thursdayStartTime)
+      @thursdayEndTime = minutesToTime(@current_match.thursdayEndTime)
+    end
+    if @current_match.fridayStartTime != nil
+      @fridayAvailable = true
+      @fridayStartTime = minutesToTime(@current_match.fridayStartTime)
+      @fridayEndTime = minutesToTime(@current_match.fridayEndTime)
+    end
+    if @current_match.saturdayStartTime != nil
+      @saturdayStartTime = minutesToTime(@current_match.saturdayStartTime)
+      @saturdayEndTime = minutesToTime(@current_match.saturdayEndTime)
+    end
+    if @current_match.sundayStartTime != nil
+      @sundayAvailable = true
+      @sundayStartTime = minutesToTime(@current_match.sundayStartTime)
+      @sundayEndTime = minutesToTime(@current_match.sundayEndTime)
+    end
+
+    @cuisines_list = Array.new
+    MatchToFood.where(matchId: @current_match.id).find_each do |match_to_food|
+      @cuisines_list << Food.where(id: match_to_food.foodId).first.name
+    end
   end
 
   def match_not_found

@@ -2,66 +2,72 @@
 	<div class="panel panel-default">
 		<div class="panel-heading text-center">
 			<b> YOUR MATCH! </b>
-			<img src="./images/default-profile.jpg" id="match-profile-logo" class="img-circle">								
+			<img src="./images/default-profile.jpg" id="match-profile-logo" class="img-circle">
 		</div>
 		<div class="panel-body text-center">
 			<ul class="list-group">
-				<li class= list-group-item> <%= print @current_match.user2Id %> </li>
+				<li class= list-group-item> <%= @other_user.name %> </li>
+				<li class= list-group-item> <%= @other_user.phone %> </li>
 				<li class="list-group-item">
 					<h4 class="list-group-item-heading"> Availability </h4>
 					<div class="row list-group-item-text">
-						<%=					
+						<%=
 							if !@current_match.mondayStartTime.nil?
-								monday = "Monday: #{@current_match.mondayStartTime} - #{@current_match.mondayEndTime}"
-								content_tag(:div, monday, class:"col-sm-12")							
-							end									
+								monday = "Monday: #{@mondayStartTime} - #{@mondayEndTime}"
+								content_tag(:div, monday, class:"col-sm-12")
+							end
 						%>
 						<%=
 							if !@current_match.tuesdayStartTime.nil?
-								tuesday = "Tuesday: #{@current_match.tuesdayStartTime} - #{@current_match.tuesdayEndTime}"
-								content_tag(:div, tuesday, class:"col-sm-12")								
-							end							
+								tuesday = "Tuesday: #{@tuesdayStartTime} - #{@tuesdayEndTime}"
+								content_tag(:div, tuesday, class:"col-sm-12")
+							end
 						%>
-						<%=					
+						<%=
 							if !@current_match.wednesdayStartTime.nil?
-								wednesday = "Wednesday: #{@current_match.wednesdayStartTime} - #{@current_match.wednesdayEndTime}"
-								content_tag(:div, wednesday, class:"col-sm-12")								
-							end							
+								wednesday = "Wednesday: #{@wednesdayStartTime} - #{@wednesdayEndTime}"
+								content_tag(:div, wednesday, class:"col-sm-12")
+							end
 						%>
-						<%=					
+						<%=
 							if !@current_match.thursdayStartTime.nil?
-								thursday = "Thursday: #{@current_match.thursdayStartTime} - #{@current_match.thursdayEndTime}"
-								content_tag(:div, thursday, class:"col-sm-12")								
-							end							
+								thursday = "Thursday: #{@thursdayStartTime} - #{@thursdayEndTime}"
+								content_tag(:div, thursday, class:"col-sm-12")
+							end
 						%>
-						<%=					
+						<%=
 							if !@current_match.fridayStartTime.nil?
-								friday = "Friday: #{@current_match.fridayStartTime} - #{@current_match.fridayEndTime}"
-								content_tag(:div, friday, class:"col-sm-12")								
-							end							
+								friday = "Friday: #{@fridayStartTime} - #{@fridayEndTime}"
+								content_tag(:div, friday, class:"col-sm-12")
+							end
 						%>
-						<%=					
+						<%=
 							if !@current_match.saturdayStartTime.nil?
-								saturday = "Saturday: #{@current_match.saturdayStartTime} - #{@current_match.saturdayEndTime}"
-								content_tag(:div, saturday, class:"col-sm-12")								
-							end							
+								saturday = "Saturday: #{@saturdayStartTime} - #{@saturdayEndTime}"
+								content_tag(:div, saturday, class:"col-sm-12")
+							end
 						%>
-						<%=					
+						<%=
 							if !@current_match.sundayStartTime.nil?
-								sunday = "Sunday: #{@current_match.sundayStartTime} - #{@current_match.sundayEndTime}"
-								content_tag(:div, sunday, class:"col-sm-12")								
-							end							
+								sunday = "Sunday: #{@sundayStartTime} - #{@sundayEndTime}"
+								content_tag(:div, sunday, class:"col-sm-12")
+							end
 						%>
+						<br/>
+						<p>Cuisines:</p>
+						<% @cuisines_list.each do |cuisine| %>
+								<%= cuisine %><br/>
+						<% end %>
 					</div>
 				</li>
 
 			</ul>
 		</div>
-	</div>	
+	</div>
 	<div class="text-center">
 		<% if Time.now.wday == 0 %>
 		<%=	 link_to('New Match', make_match_path,
-			 class:"btn match-button hvr-outline-out", style: 'width: auto', title:"Make a new match for next week!", 
+			 class:"btn match-button hvr-outline-out", style: 'width: auto', title:"Make a new match for next week!",
 			 data: {toggle: 'tooltip', placement: 'left'})
 		%>
 		<%end%>
