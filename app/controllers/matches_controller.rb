@@ -31,8 +31,8 @@ class MatchesController < ApplicationController
 
   def match_request
     # check if user already submitted a request
-    user1_matches = Match.pending_or_complete.with_user1(current_user.id.to_s).size
-    user2_matches = Match.pending_or_complete.with_user2(current_user.id.to_s).size
+    user1_matches = Match.pending_or_finished.with_user1(current_user.id.to_s).size
+    user2_matches = Match.pending_or_finished.with_user2(current_user.id.to_s).size
     if user1_matches > 0 || user2_matches > 0
       return head(:bad_request)
     end
@@ -147,7 +147,7 @@ class MatchesController < ApplicationController
       create_new_match
     else
       # modify existing picked_match
-      picked_match.status = 'complete'
+      picked_match.status = 'finished'
       picked_match.user2Id = current_user.id
       
       # update similar foods

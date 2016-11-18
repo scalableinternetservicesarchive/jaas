@@ -157,7 +157,7 @@ function handleMatchButton() {
             },
             success: function(data) {
                 alert('Your match request has been submitted');
-                location.reload();
+                window.location.replace('/');
             },
             error: function(data) {
                 alert('An error occurred while trying to request a match.');
