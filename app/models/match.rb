@@ -1,6 +1,6 @@
 class Match < ApplicationRecord
   scope :pending, -> { where(status: 'pending') }
-  scope :pending_or_finished, -> { where("matches.status = 'pending' OR matches.status = 'complete'") }
+  scope :pending_or_finished, -> { where("matches.status = 'pending' OR matches.status = 'finished'") }
   scope :with_user1, ->(user_id) { joins("INNER JOIN users ON users.id = matches.user1Id AND users.id = ", user_id).distinct }
   scope :with_user2, ->(user_id) { joins("INNER JOIN users ON users.id = matches.user2Id AND users.id = ", user_id).distinct }
   scope :with_school, ->(school) { joins("INNER JOIN users ON users.id = matches.user1Id AND users.school = '" + school + "'").distinct }
