@@ -6,49 +6,49 @@
 		</div>
 		<div class="panel-body text-center">
 			<ul class="list-group">
-
+				<li class= list-group-item> <%= print @current_match.user2Id %> </li>
 				<li class="list-group-item">
 					<h4 class="list-group-item-heading"> Availability </h4>
 					<div class="row list-group-item-text">
 						<%=					
-							if !@match_request.mondayStartTime.nil?
-								monday = "Monday: #{@match_request.mondayStartTime} - #{@match_request.mondayEndTime}"
+							if !@current_match.mondayStartTime.nil?
+								monday = "Monday: #{@current_match.mondayStartTime} - #{@current_match.mondayEndTime}"
 								content_tag(:div, monday, class:"col-sm-12")							
 							end									
 						%>
 						<%=
-							if !@match_request.tuesdayStartTime.nil?
-								tuesday = "Tuesday: #{@match_request.tuesdayStartTime} - #{@match_request.tuesdayEndTime}"
+							if !@current_match.tuesdayStartTime.nil?
+								tuesday = "Tuesday: #{@current_match.tuesdayStartTime} - #{@current_match.tuesdayEndTime}"
 								content_tag(:div, tuesday, class:"col-sm-12")								
 							end							
 						%>
 						<%=					
-							if !@match_request.wednesdayStartTime.nil?
-								wednesday = "Wednesday: #{@match_request.wednesdayStartTime} - #{@match_request.wednesdayEndTime}"
+							if !@current_match.wednesdayStartTime.nil?
+								wednesday = "Wednesday: #{@current_match.wednesdayStartTime} - #{@current_match.wednesdayEndTime}"
 								content_tag(:div, wednesday, class:"col-sm-12")								
 							end							
 						%>
 						<%=					
-							if !@match_request.thursdayStartTime.nil?
-								thursday = "Thursday: #{@match_request.thursdayStartTime} - #{@match_request.thursdayEndTime}"
+							if !@current_match.thursdayStartTime.nil?
+								thursday = "Thursday: #{@current_match.thursdayStartTime} - #{@current_match.thursdayEndTime}"
 								content_tag(:div, thursday, class:"col-sm-12")								
 							end							
 						%>
 						<%=					
-							if !@match_request.fridayStartTime.nil?
-								friday = "Friday: #{@match_request.thursdayStartTime} - #{@match_request.thursdayEndTime}"
+							if !@current_match.fridayStartTime.nil?
+								friday = "Friday: #{@current_match.fridayStartTime} - #{@current_match.fridayEndTime}"
 								content_tag(:div, friday, class:"col-sm-12")								
 							end							
 						%>
 						<%=					
-							if !@match_request.saturdayStartTime.nil?
-								saturday = "Saturday: #{@match_request.saturdayStartTime} - #{@match_request.saturdayEndTime}"
+							if !@current_match.saturdayStartTime.nil?
+								saturday = "Saturday: #{@current_match.saturdayStartTime} - #{@current_match.saturdayEndTime}"
 								content_tag(:div, saturday, class:"col-sm-12")								
 							end							
 						%>
 						<%=					
-							if !@match_request.sundayStartTime.nil?
-								sunday = "Sunday: #{@match_request.sundayStartTime} - #{@match_request.sundayEndTime}"
+							if !@current_match.sundayStartTime.nil?
+								sunday = "Sunday: #{@current_match.sundayStartTime} - #{@current_match.sundayEndTime}"
 								content_tag(:div, sunday, class:"col-sm-12")								
 							end							
 						%>
@@ -58,4 +58,12 @@
 			</ul>
 		</div>
 	</div>
+	<div class="text-center">
+		<% if @current_match.status=='next_week' %>
+		<%=	 link_to('New Match', make_match_path,
+			 class:"btn match-button hvr-outline-out", style: 'width: auto', title:"Make a new match for next week!", 
+			 data: {toggle: 'tooltip', placement: 'left'})
+		%>
+		<%end%>
+	 </div>
 </div>

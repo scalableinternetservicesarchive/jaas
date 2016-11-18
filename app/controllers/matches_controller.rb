@@ -1,39 +1,32 @@
 class MatchesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @match_request = Match.find_by(user1Id: current_user.id)
-    if @match_request.nil?
-    	destination = 'make_match'
-    elsif @match_request.status='finished'
+    @match_request = Match.where(user1Id: current_user.id).where.not(status: 'archived')
+    @current_match = @match_request.first   
+    if @match_request.empty? #user logs in after sunday and all old matches have been archived
+      destination = 'make_match'
+    elsif @current_match.status='complete'
     	destination = 'match_found'
-    else
+    elsif @current_match.status='pending'
     	destination = 'match_not_found'
+    else #make next match for next week
+      @match_request.user2Id.nil? ? destination = 'match_not_found' : destination = 'match_found'
     end
-	redirect_to request.url.sub('index', destination)  	
+	redirect_to request.url.sub('index', destination)  
   end
 
   def make_match
-    @day_of_week = Time.now.wday # sunday = 0, monday = 1, ...
+    @day_of_week = Time.now.wday # sunday = 0, monday = 1, ...       
   end
 
   def match_found
-    #@match_request = Match.find_by(user1Id: current_user.id)
-    #@match_request = Match.new(5,6, "finished", "9/11/11", "9/12/12", 5, 7, 1, 2, 12, 4,1,1,4,4,2,2,5,5)
-    #@match_request = Match.new
-    #@match_request.user1Id = 1
-    #@match_request.status = "finished"
-    #@match_request.mondayStartTime = 4
-    #@match_request.mondayEndTime = 6
-    #@match_request.tuesdayStartTime = 4
-    #@match_request.tuesdayEndTime = 6          
-    #@match_request.wednesdayStartTime = 4
-    #@match_request.wednesdayEndTime = 6
-    #@match_request.save
-    @match_request = Match.find_by(id: 10)
+    @match_request = Match.where(user1Id: current_user.id).where.not(status: 'archived')
+    @current_match = @match_request.first
   end
 
   def match_not_found
-    @match_request = Match.find_by(user1Id: current_user.id)  	
+    @match_request = Match.where(user1Id: current_user.id).where.not(status: 'archived')
+    @current_match = @match_request.first   
   end
 
   def match_request
@@ -253,7 +246,7 @@ class MatchesController < ApplicationController
       new_match.user1Id = current_user.id
       
       if Time.now.wday == 0
-        new_match.status = 'next week'
+        new_match.status = 'next_week'
       else
         new_match.status = 'pending'
       end
