@@ -4,7 +4,12 @@
 		<h4> Check back soon! :) </h4>
 	</div>
 	<div>
-		Your request details: <br/>
+		<% if @current_match.status == 'pending' %>
+			Your request details:
+		<% else %>
+			Your next week's request details:
+		<% end %>
+		<br/>
 		<p>Availability:</p>
 		<%=
 			if !@current_match.mondayStartTime.nil?
