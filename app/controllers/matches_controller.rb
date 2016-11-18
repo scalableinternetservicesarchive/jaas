@@ -5,9 +5,9 @@ class MatchesController < ApplicationController
     @current_match = @match_request.first   
     if @match_request.empty? #user logs in after sunday and all old matches have been archived
       destination = 'make_match'
-    elsif @current_match.status='complete'
+    elsif @current_match.status=='finished'
     	destination = 'match_found'
-    elsif @current_match.status='pending'
+    elsif @current_match.status=='pending'
     	destination = 'match_not_found'
     else #make next match for next week
       @match_request.user2Id.nil? ? destination = 'match_not_found' : destination = 'match_found'
@@ -280,7 +280,7 @@ class MatchesController < ApplicationController
         new_match.sundayEndTime = params[:sundayTimes][1]
       end
       new_match.save!
-      
+
       params[:cuisines].each do |cuisine|
         new_match_to_food = MatchToFood.new(matchId: new_match.id, foodId: cuisine)
         new_match_to_food.save

@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="jumbotron" style="background-color: #252120;">
 		<h1> Sorry, you currently don't have any matches!</h1>
-		<h3> Check back soon </h3>
+		<h4> Check back soon! :) </h4>
 	</div>
-	<% if @current_match.status=='next_week' %>
+	<% if Time.now.wday == 0 %>
 	<%=	 link_to('New Match', make_match_path,
 		 class:"btn match-button hvr-outline-out", style: 'width: auto', title:"Make a new match for next week!", 
 		 data: {toggle: 'tooltip', placement: 'left'})

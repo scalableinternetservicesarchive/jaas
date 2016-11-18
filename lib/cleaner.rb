@@ -11,8 +11,4 @@ class Cleaner
 			puts match.inspect
 		}		
 	end
-
-	def self.make_new_matches()
-		Match.where.not(status:'archived').update("next_week")		
-	end
 end
