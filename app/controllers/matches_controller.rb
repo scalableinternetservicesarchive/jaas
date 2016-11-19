@@ -313,7 +313,11 @@ class MatchesController < ApplicationController
         picked_match.sundayEndTime = nil
       end
 
-      picked_match.save
+      picked_match.save!
+
+      # send notification emails to users
+      NotificationMailer.notification_email(User.find(picked_match.user1Id)).deliver_later
+      NotificationMailer.notification_email(User.find(picked_match.user2Id)).deliver_later
     end
   end
 
