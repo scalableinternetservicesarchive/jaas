@@ -1,32 +1,25 @@
 class MatchesController < ApplicationController
   before_action :authenticate_user!
-  def index
+  def dashboard
     @current_match = Match.where(user1Id: current_user.id).where.not(status: 'archived').first
     @current_match = Match.where(user2Id: current_user.id).where.not(status: 'archived').first if @current_match == nil
 
     if @current_match == nil #user logs in after sunday and all old matches have been archived
-      destination = 'make_match'
+      make_match
     elsif @current_match.status=='finished'
-    	destination = 'match_found'
+    	match_found
     else
-    	destination = 'match_not_found'
+    	match_not_found
     end
-    redirect_to request.url.sub('index', destination)
   end
 
   def make_match
     @day_of_week = Time.now.wday # sunday = 0, monday = 1, ...
+    render 'make_match'
   end
 
   def match_found
-    @current_match = Match.where(user1Id: current_user.id).where.not(status: 'archived').first
-
-    if @current_match == nil
-      @current_match = Match.where(user2Id: current_user.id).where.not(status: 'archived').first
-      @other_user = User.find(@current_match.user1Id)
-    else
-      @other_user = User.find(@current_match.user2Id)
-    end
+    @other_user = @current_match.user1Id == current_user.id ? User.find(@current_match.user2Id) : User.find(@current_match.user1Id)
 
     if @current_match.mondayStartTime != nil
       @mondayStartTime = minutesToTime(@current_match.mondayStartTime)
@@ -66,11 +59,11 @@ class MatchesController < ApplicationController
     MatchToFood.where(matchId: @current_match.id).find_each do |match_to_food|
       @cuisines_list << Food.where(id: match_to_food.foodId).first.name
     end
+
+    render 'match_found'
   end
 
   def match_not_found
-    @current_match = Match.where(user1Id: current_user.id).where.not(status: 'archived').first
-    @current_match = Match.where(user2Id: current_user.id).where.not(status: 'archived').first if @current_match == nil
     @status = @current_match.status
 
     if @current_match.mondayStartTime != nil
@@ -111,6 +104,8 @@ class MatchesController < ApplicationController
     MatchToFood.where(matchId: @current_match.id).find_each do |match_to_food|
       @cuisines_list << Food.where(id: match_to_food.foodId).first.name
     end
+
+    render 'match_not_found'
   end
 
   def match_request
