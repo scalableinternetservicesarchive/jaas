@@ -12,8 +12,7 @@ to run on development:
 2) crontab -l //verifies whenever ran cron task
 
 TEST CASE:
-
+=end
 every 1.minutes do
 	rake "clear_matches"
 end
-=end
