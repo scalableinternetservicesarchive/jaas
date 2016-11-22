@@ -5,14 +5,6 @@ gem 'bootstrap-slider-rails'
 gem 'actionmailer', '~> 5.0', '>= 5.0.0.1'
 gem 'resque'
 
-gem 'figaro'
-group :development do
-  gem 'capistrano'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rvm'
-end
 gem 'hover-rails'
 
 # Use devise for user login

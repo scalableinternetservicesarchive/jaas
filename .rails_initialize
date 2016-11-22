@@ -1,1 +1,2 @@
 rake db:seed
+bundle exec whenever --update-cron
