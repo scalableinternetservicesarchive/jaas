@@ -37,46 +37,98 @@
   </options>
 
   <sessions>
-    <session name="register-and-login" probability="100" type="ts_http">
+    <session name="register-and-make_match" probability="50" type="ts_http">
       <!-- go to landing page -->
       <request>
-        <http url='/' version='1.1' method='GET'></http>
+        <http url="/" version="1.1" method="GET"></http>
       </request>
 
       <thinktime value="2" random="true"></thinktime>
 
-      <!-- login page -->
+      <!-- registration page -->
       <request>
-        <http url='/sign_up' version='1.1' method='GET'></http>
+        <http url="/sign_up" version="1.1" method="GET"></http>
       </request>
     
       <!-- wait and create account -->
-      <thinktime value="6" random="true"></thinktime>      
-      <request subt="true">
-        <setdynvars sourcetype="random_number" start="1" end="99999">
-          <var name="user_name"/>
-        </setdynvars>
-        <http method='POST'
-          url='/sign_up'
+      <thinktime value="5" random="true"></thinktime>
+      <setdynvars sourcetype="random_number" start="1" end="99999">
+        <var name="user_name"/>
+      </setdynvars>      
+      <request subst="true">
+        <http method="POST"
+          url="/sign_up"
+          version="1.1"
           contents="user%5Bname%5D=%%_user_name%%&amp;
           user%5Bschool%5D=UCLA&amp;
           user%5Bemail%5D=user%%_user_name%%%40gmail.com&amp;
-          user%5Bphone%5D=(000)-000-0000&amp;
+          user%5Bphone%5D=%28000%28%2D000%2D0000&amp;
           user%5Bpassword%5D=test123&amp;
-          user%5Bpassword_confirmation%5D=test123C&amp;"/>   
+          user%5Bpassword_confirmation%5D=test123">
         </http>
       </request>
-      <!-- make a match -->
-      <thinktime value="15" random="true"></thinktime>
-    
-      <!-- wait for match decision then logout -->
-      <thinktime value="5" random="true"></thinktime>
 
+      <!-- make a new match -->
+      <thinktime value="10" random="true"></thinktime>
+      <setdynvars sourcetype="random_number" start="0" end="720">
+        <var name="mon_start"/>
+        <var name="mon_end"/>
+        <var name="tues_start"/>
+        <var name="tues_end"/>        
+        <var name="wedn_start"/>
+        <var name="wedn_end"/>        
+        <var name="thur_start"/>
+        <var name="thur_end"/>
+        <var name="fri_start"/>
+        <var name="fri_end"/>
+        <var name="sat_start"/>
+        <var name="sat_end"/>
+        <var name="sun_start"/>
+        <var name="sun_end"/>
+      </setdynvars>
+      <setdynvars sourcetype="random_number" start="1" end="13">
+        <var name="cuisines"/>
+      </setdynvars>
+
+      <request subst="true">
+        <http method="POST"
+          url="/match_request"
+          version="1.1"
+          contents="mondayAvailable=true&amp;
+          mondayTimes%5B0%5D=%%_mon_start%%&amp;mondayTimes%5B1%5D=%%_mon_end%%&amp;
+          tuesdayAvailable=true&amp;
+          tuesdayTimes%5B0%5D=%%_tues_start%%&amp;mondayTimes%5B1%5D=%%_tues_end%%&amp;
+          wednesdayAvailable=true&amp;
+          wednesdayTimes%5B0%5D=%%_wedn_start%%&amp;wednesdayTimes%5B1%5D=%%_wedn_end%%&amp;
+          thursdayAvailable=true&amp;
+          thursdayTimes%5B0%5D=%%_thur_start%%&amp;thursdayTimes%5B1%5D=%%_thur_end%%&amp;
+          fridayAvailable=true&amp;
+          fridayTimes%5B0%5D=%%_fri_start%%&amp;fridayTimes%5B1%5D=%%_fri_end%%&amp;
+          saturdayAvailable=true&amp;
+          saturdayTimes%5B0%5D=%%_sat_start%%&amp;saturdayTimes%5B1%5D=%%_sat_end%%&amp;
+          sundayAvailable=true&amp;
+          sundayTimes%5B0%5D=%%_sun_start%%&amp;sundayTimes%5B1%5D=%%_sun_end%%&amp;
+          cuisines%5B0%5D=%%_cuisines%%">
+        </http>
+      </request>
+
+      <!-- wait for match decision then logout -->
+      <thinktime value="7" random="true"></thinktime>
     </session>
     
-    <session name="check-for-match" probability="50">
-    </session>
-    <session name="edit-user-profile" probability="50">
+    <session name="check-for-match" probability="50" type="ts_http">
+      <!-- go to landing page -->
+      <request>
+        <http url="/" version="1.1" method="GET"></http>
+      </request>
+
+      <!-- go to login page -->
+      <request>
+        <http url="/sign_in" method="GET" version="1.1"></http>
+      </request>
+      
+      <!-- read match/no match info and then logout -->
+      <thinktime value="10" random="true"></thinktime>
     </session>
   </sessions>
 </tsung>

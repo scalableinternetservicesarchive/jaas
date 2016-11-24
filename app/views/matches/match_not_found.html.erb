@@ -58,5 +58,12 @@
 		<% @cuisines_list.each do |cuisine| %>
 				<%= cuisine %><br/>
 		<% end %>
-	</div>	
+	</div>
+	<div class="text-center" style="margin-bottom: 20px">
+		<% if Time.now.wday == 0 %>
+		<%= link_to('New Match', make_match_path,
+		class:"btn match-button hvr-outline-out", style: 'width: auto', title:"Make a new match for next week!",
+		data: {toggle: 'tooltip', placement: 'left'})%>
+		<%end%>
+	</div>			
 </div>
