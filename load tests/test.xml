@@ -37,11 +37,46 @@
   </options>
 
   <sessions>
-    <session name="make-a-match" probability="100" type="ts_http">
-      <!-- go to dashboard -->
+    <session name="register-and-login" probability="100" type="ts_http">
+      <!-- go to landing page -->
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- login page -->
+      <request>
+        <http url='/sign_up' version='1.1' method='GET'></http>
+      </request>
+    
+      <!-- wait and create account -->
+      <thinktime value="6" random="true"></thinktime>      
+      <request subt="true">
+        <setdynvars sourcetype="random_number" start="1" end="99999">
+          <var name="user_name"/>
+        </setdynvars>
+        <http method='POST'
+          url='/sign_up'
+          contents="user%5Bname%5D=%%_user_name%%&amp;
+          user%5Bschool%5D=UCLA&amp;
+          user%5Bemail%5D=user%%_user_name%%%40gmail.com&amp;
+          user%5Bphone%5D=(000)-000-0000&amp;
+          user%5Bpassword%5D=test123&amp;
+          user%5Bpassword_confirmation%5D=test123C&amp;"/>   
+        </http>
+      </request>
+      <!-- make a match -->
+      <thinktime value="15" random="true"></thinktime>
+    
+      <!-- wait for match decision then logout -->
+      <thinktime value="5" random="true"></thinktime>
+
+    </session>
+    
+    <session name="check-for-match" probability="50">
+    </session>
+    <session name="edit-user-profile" probability="50">
     </session>
   </sessions>
 </tsung>

@@ -1,13 +1,15 @@
 <div class="container">
-	<div class="panel panel-default">
+	<div class="panel panel-default" style="margin-bottom: 20px">
 		<div class="panel-heading text-center">
 			<b> YOUR MATCH! </b>
 			<img src="./images/default-profile.jpg" id="match-profile-logo" class="img-circle">
 		</div>
 		<div class="panel-body text-center">
 			<ul class="list-group">
-				<li class= list-group-item> <%= @other_user.name %> </li>
-				<li class= list-group-item> <%= @other_user.phone %> </li>
+				<li class= list-group-item>
+					<h3 class="list-group-item-heading"> <%= @other_user.name.upcase %> </h3> 
+					<p class="list-group-item-text"> Phone: <%= @other_user.phone %> </p>
+				</li>
 				<li class="list-group-item">
 					<h4 class="list-group-item-heading"> Availability </h4>
 					<div class="row list-group-item-text">
@@ -53,14 +55,16 @@
 								content_tag(:div, sunday, class:"col-sm-12")
 							end
 						%>
-						<br/>
-						<p>Cuisines:</p>
-						<% @cuisines_list.each do |cuisine| %>
-								<%= cuisine %><br/>
-						<% end %>
 					</div>
 				</li>
-
+				<li class="list-group-item">
+					<h4 class="list-group-item-heading">Cuisines:</h4>
+					<div class="list-group-item-text"> 
+						<% @cuisines_list.each do |cuisine| %>
+								<%= cuisine %><br/>
+						<% end %>				
+					</div>			
+				</li>
 			</ul>
 		</div>
 	</div>
