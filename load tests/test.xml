@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE tsung SYSTEM "/home/ec2-user/opt/tsung-1.5.0/share/tsung/tsung-1.0.dtd">
-<tsung loglevel="notice" version="1.0">
+<tsung loglevel="info" dumptraffic="protocol">
 
   <!-- Client side setup -->
   <clients>
@@ -57,7 +57,7 @@
       </setdynvars>      
       <request subst="true">
         <http method="POST"
-          url="/sign_up"
+          url="/users"
           version="1.1"
           contents="user%5Bname%5D=%%_user_name%%&amp;
           user%5Bschool%5D=UCLA&amp;
@@ -66,6 +66,11 @@
           user%5Bpassword%5D=test123&amp;
           user%5Bpassword_confirmation%5D=test123">
         </http>
+      </request>
+
+      <!-- go to dashboard -->
+      <request>
+        <http method="GET" url="/dashboard" version="1.1"></http>
       </request>
 
       <!-- make a new match -->
@@ -113,22 +118,33 @@
       </request>
 
       <!-- wait for match decision then logout -->
-      <thinktime value="7" random="true"></thinktime>
+      <thinktime value="5" random="true"></thinktime>
+      <request>
+        <http url="/users/sign_out" method="DELETE" version="1.1"></http>
+      </request>
     </session>
     
     <session name="check-for-match" probability="50" type="ts_http">
       <!-- go to landing page -->
       <request>
-        <http url="/" version="1.1" method="GET"></http>
+        <http url="/" version="1.1" method="GET" version="1.1"></http>
       </request>
 
       <!-- go to login page -->
       <request>
         <http url="/sign_in" method="GET" version="1.1"></http>
       </request>
-      
+
+      <!-- go to dashboard -->
+      <request>
+        <http method="GET" url="/dashboard" version="1.1"></http>
+      </request>   
+         
       <!-- read match/no match info and then logout -->
       <thinktime value="10" random="true"></thinktime>
+      <request>
+        <http url="/users/sign_out" method="DELETE" version="1.1"></http>
+      </request>      
     </session>
   </sessions>
 </tsung>
