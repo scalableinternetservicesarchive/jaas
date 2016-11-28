@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Armata|Bungee+Inline|Kreon');
+
 .header {
 	text-align: center;
 	top: 0;
@@ -36,23 +38,15 @@
   padding: 0;
   vertical-align: middle;
   background: transparent;
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: 'Armata', sans-serif;
 }
 
-#header-logo {
-	color: #9d9d9d;
-  &:hover {
-    color: white;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-  }
-}
 #headerLogOutButton {
   font-size: 14px;
   text-transform: uppercase;
   padding: 5px;
   margin: 10px;
+  font-family: 'Armata', sans-serif;
 }
 
 .noselect {
@@ -66,4 +60,15 @@
 #settingsButton {
   max-width:100%;
   max-height:100%;
+}
+
+#logoHeader {
+  height: 132px;
+  padding-bottom: 115px;
+}
+
+#header-logo {
+  font-family: 'Bungee Inline', cursive;
+  height: 40px;
+  width: 240px;
 }

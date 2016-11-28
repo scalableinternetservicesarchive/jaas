@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'hover';
+@import url('https://fonts.googleapis.com/css?family=Armata|Bungee+Inline|Kreon');
 
 .panel {
 	margin: 0 auto;
-	width: 60%;
+	width: 25em;
 	background-color: #252120;	
 }
 
@@ -20,16 +21,27 @@
 	border: none;
 }
 
+.list-group-item, .list-group-item-text {
+	font-size: 1.3em;
+	font-family: 'Armata', sans-serif;
+}
+
+.list-group-item-heading {
+	font-size: 1.7em;
+	font-family: 'Kreon', serif;
+}
+
 .form {
 	margin-bottom: 10px;
 }
 
 #match-profile-logo {
-	width: 30%;
-	height: 30%;
+	height: 11em;
+	width: 11em;
 	margin-bottom: 10px;
 	position: relative;
 	bottom: -10px;
+	padding-bottom: 5px;
 }
 
 .match-button {
@@ -61,4 +73,39 @@
 .slider-container {
 	margin-top: 30px;
 	margin-bottom: 25px;
+}
+
+.pulsebg {
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #001F3F;
+    color: white;
+  }
+  50% {
+    background-color: black;
+    color: white;
+  }
+  100% {
+    background-color: #001F3F;
+    color: white;
+  }
+}
+
+#yourMatch {
+	font-size: 2em;
+	font-family: 'Kreon', serif;
+}
+
+
+.list-group-item-day {
+  font-size: 0.8em;
+  font-family: 'Armata', sans-serif;
+}
+
+
+.cuisinesOuterDiv {
+  font-size: 1em;
 }
