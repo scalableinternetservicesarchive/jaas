@@ -18,6 +18,7 @@
   font-family: "Earthorbiter";
   src: url('/assets/fonts/earthorbiter.ttf') format("truetype");
 }
+@import url('https://fonts.googleapis.com/css?family=Armata|Bungee+Inline|Kreon');
 
 html {
 	min-height: 100vh;
@@ -37,6 +38,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   color: white;
+  font-family: 'Armata', sans-serif;
 }
 
 a {
