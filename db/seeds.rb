@@ -7,13 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #populate with fake matches
-=begin
 Match.create(user1Id: 2, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
 Match.create(user1Id: 3, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
 Match.create(user1Id: 4, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
 Match.create(user1Id: 5, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
 Match.create(user1Id: 6, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
-=end
 MatchToFood.create(matchId: 1, foodId: 2);
 MatchToFood.create(matchId: 2, foodId: 2);
 MatchToFood.create(matchId: 3, foodId: 2);
