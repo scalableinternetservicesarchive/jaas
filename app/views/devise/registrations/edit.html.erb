@@ -1,5 +1,6 @@
 <div class="container-fluid" style="width:50%; margin-bottom: 20px; position: relative;">
-<h2 style="color:white">Edit information</h2>
+<div style="color:white; text-align: center;"><%= link_to "⇠", :back, class:"btn btn-info", style:"width: auto; margin: auto; font-size: 40px; font-weight: 700;"%></div>
+<h2 style="color:white; text-align: center;">Edit information</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -49,12 +50,8 @@
   <%= f.submit "Update", class:"btn btn-success", style:"width: auto; margin: 0 auto; display:block" %>
 <% end %>
 
-<h3>Cancel account</h3>
-
-<p>Unhappy?</p>
-<%= button_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger", style:"width: auto; margin: 0 auto;" %>
-
+<p style="color:white; text-align: center; padding-top: 10px;">Unhappy?</p>
+<div style="color:white; text-align: center;"><%= button_to "Cancel account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger", style:"width: auto; margin: auto;" %>
+</div>
 <br />
-<%= link_to "Back", :back %>
-
 </div>
