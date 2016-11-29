@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="http://jaas-demo-97559592.us-west-2.elb.amazonaws.com" port="80" type="tcp"></server>
+    <server host="jaas-demo-97559592.us-west-2.elb.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
