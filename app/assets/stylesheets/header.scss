@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Armata|Bungee+Inline|Kreon');
+@import url('https://fonts.googleapis.com/css?family=Kanit:500|Righteous');
 
 .header {
 	text-align: center;
@@ -38,7 +39,7 @@
   padding: 0;
   vertical-align: middle;
   background: transparent;
-  font-family: 'Armata', sans-serif;
+  font-family: 'Righteous', cursive;
 }
 
 #headerLogOutButton {
@@ -46,7 +47,7 @@
   text-transform: uppercase;
   padding: 5px;
   margin: 10px;
-  font-family: 'Armata', sans-serif;
+  font-family: 'Righteous', cursive;
 }
 
 .noselect {
@@ -68,7 +69,8 @@
 }
 
 #header-logo {
-  font-family: 'Bungee Inline', cursive;
+  font-family: 'Righteous', cursive;
   height: 40px;
-  width: 240px;
+  padding-left: 0px;
+  padding-right: 0px;
 }

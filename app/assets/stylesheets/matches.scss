@@ -3,11 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'hover';
 @import url('https://fonts.googleapis.com/css?family=Armata|Bungee+Inline|Kreon');
+@import url('https://fonts.googleapis.com/css?family=Kanit:500|Righteous');
 
 .panel {
 	margin: 0 auto;
 	width: 25em;
 	background-color: #252120;	
+	margin-bottom: 10px;
 }
 
 .panel-heading b {
@@ -28,7 +30,7 @@
 
 .list-group-item-heading {
 	font-size: 1.7em;
-	font-family: 'Kreon', serif;
+  font-family: 'Righteous', cursive;
 }
 
 .form {
@@ -96,7 +98,7 @@
 
 #yourMatch {
 	font-size: 2em;
-	font-family: 'Kreon', serif;
+  font-family: 'Righteous', cursive;
 }
 
 
