@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="35.164.210.202" port="80" type="tcp"></server>
+    <server host="http://jaas-demo-97559592.us-west-2.elb.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
@@ -92,7 +92,9 @@
         <var name="sun_end"/>
       </setdynvars>
       <setdynvars sourcetype="random_number" start="1" end="13">
-        <var name="cuisines"/>
+        <var name="cuisines1"/>
+        <var name="cuisines2"/>
+        <var name="cuisines3"/>
       </setdynvars>
 
       <request subst="true">
@@ -113,7 +115,7 @@
           saturdayTimes%5B0%5D=%%_sat_start%%&amp;saturdayTimes%5B1%5D=%%_sat_end%%&amp;
           sundayAvailable=true&amp;
           sundayTimes%5B0%5D=%%_sun_start%%&amp;sundayTimes%5B1%5D=%%_sun_end%%&amp;
-          cuisines%5B0%5D=%%_cuisines%%">
+          cuisines=%%_cuisines1%%,%%_cuisines2%%,%%_cuisines3%%">
         </http>
       </request>
 
