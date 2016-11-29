@@ -115,7 +115,7 @@
           saturdayTimes%5B0%5D=%%_sat_start%%&amp;saturdayTimes%5B1%5D=%%_sat_end%%&amp;
           sundayAvailable=true&amp;
           sundayTimes%5B0%5D=%%_sun_start%%&amp;sundayTimes%5B1%5D=%%_sun_end%%&amp;
-          cuisines=%%_cuisines1%%,%%_cuisines2%%,%%_cuisines3%%">
+          cuisines%5B0%5D=%%_cuisines1%%&amp;cuisines%5B1%5D=%%_cuisines2%%&amp;cuisines%5B2%5D=%%_cuisines3%%">
         </http>
       </request>
 
