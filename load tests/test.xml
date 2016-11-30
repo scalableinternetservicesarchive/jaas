@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE tsung SYSTEM "/home/ec2-user/opt/tsung-1.5.0/share/tsung/tsung-1.0.dtd">
-<tsung loglevel="notice" version="1.0">
+<tsung loglevel="info" dumptraffic="protocol">
 
   <!-- Client side setup -->
   <clients>
@@ -9,7 +9,11 @@
 
   <!-- Server side setup -->
   <servers>
+<<<<<<< HEAD
     <server host="35.164.38.181" port="80" type="tcp"></server>
+=======
+    <server host="ec2-35-164-141-170.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+>>>>>>> 0759dc82d656b4f4f7bfed8da3238fafc5b208c4
   </servers>
 
   <load>
@@ -20,17 +24,19 @@
       <users arrivalrate="2" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="3" duration="30" unit="second">
-      <users arrivalrate="4" unit="second"></users>
-    </arrivalphase>
+      <users arrivalrate="4" unit="second"></users>  
+    </arrivalphase>  
     <arrivalphase phase="4" duration="30" unit="second">
-      <users arrivalrate="8" unit="second"></users>
-    </arrivalphase>
+      <users arrivalrate="8" unit="second"></users>  
+    </arrivalphase>  
+    <arrivalphase phase="5" duration="30" unit="second">
+      <users arrivalrate="16" unit="second"></users>  
+    </arrivalphase>   
   </load>
 
   <options>
     <!-- Set connection timeout to 2 seconds -->
     <option name="global_ack_timeout" value="2000"></option>
-
     <option type="ts_http" name="user_agent">
       <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
     </option>
@@ -57,15 +63,15 @@
       </setdynvars>      
       <request subst="true">
         <http method="POST"
-          url="/sign_up"
+          url="/users"
           version="1.1"
-          contents="user%5Bname%5D=%%_user_name%%&amp;
-          user%5Bschool%5D=UCLA&amp;
-          user%5Bemail%5D=user%%_user_name%%%40gmail.com&amp;
-          user%5Bphone%5D=%28000%28%2D000%2D0000&amp;
-          user%5Bpassword%5D=test123&amp;
-          user%5Bpassword_confirmation%5D=test123">
+          contents="user%5Bname%5D=%%_user_name%%&amp;user%5Bschool%5D=UCLA&amp;user%5Bemail%5D=user%%_user_name%%%40gmail.com&amp;user%5Bphone%5D=%28000%29%2D000%2D0000&amp;user%5Bpassword%5D=test123&amp;user%5Bpassword_confirmation%5D=test123">
         </http>
+      </request>
+
+      <!-- go to dashboard -->
+      <request>
+        <http method="GET" url="/dashboard" version="1.1"></http>
       </request>
 
       <!-- make a new match -->
@@ -87,13 +93,22 @@
         <var name="sun_end"/>
       </setdynvars>
       <setdynvars sourcetype="random_number" start="1" end="13">
-        <var name="cuisines"/>
+        <var name="cuisines1"/>
+<<<<<<< HEAD
+        <var name="cuisines2"/>        
+=======
+        <var name="cuisines2"/>
+        <var name="cuisines3"/>
+>>>>>>> e79a49df02aacf1b24e1158bd18fee05d1bde890
       </setdynvars>
 
       <request subst="true">
         <http method="POST"
           url="/match_request"
           version="1.1"
+<<<<<<< HEAD
+          contents="mondayAvailable=true&amp;mondayTimes%5B0%5D=%%_mon_start%%&amp;mondayTimes%5B1%5D=%%_mon_end%%&amp;tuesdayAvailable=true&amp;tuesdayTimes%5B0%5D=%%_tues_start%%&amp;mondayTimes%5B1%5D=%%_tues_end%%&amp;wednesdayAvailable=true&amp;wednesdayTimes%5B0%5D=%%_wedn_start%%&amp;wednesdayTimes%5B1%5D=%%_wedn_end%%&amp;thursdayAvailable=true&amp;thursdayTimes%5B0%5D=%%_thur_start%%&amp;thursdayTimes%5B1%5D=%%_thur_end%%&amp;fridayAvailable=true&amp;fridayTimes%5B0%5D=%%_fri_start%%&amp;fridayTimes%5B1%5D=%%_fri_end%%&amp;saturdayAvailable=true&amp;saturdayTimes%5B0%5D=%%_sat_start%%&amp;saturdayTimes%5B1%5D=%%_sat_end%%&amp;sundayAvailable=true&amp;sundayTimes%5B0%5D=%%_sun_start%%&amp;sundayTimes%5B1%5D=%%_sun_end%%&amp;cuisines%5B%5D=%%_cuisines1%%&amp;cuisines%5B%5D=%%_cuisines2%%">
+=======
           contents="mondayAvailable=true&amp;
           mondayTimes%5B0%5D=%%_mon_start%%&amp;mondayTimes%5B1%5D=%%_mon_end%%&amp;
           tuesdayAvailable=true&amp;
@@ -108,27 +123,39 @@
           saturdayTimes%5B0%5D=%%_sat_start%%&amp;saturdayTimes%5B1%5D=%%_sat_end%%&amp;
           sundayAvailable=true&amp;
           sundayTimes%5B0%5D=%%_sun_start%%&amp;sundayTimes%5B1%5D=%%_sun_end%%&amp;
-          cuisines%5B0%5D=%%_cuisines%%">
+          cuisines%5B0%5D=%%_cuisines1%%&amp;cuisines%5B1%5D=%%_cuisines2%%&amp;cuisines%5B2%5D=%%_cuisines3%%">
+>>>>>>> e79a49df02aacf1b24e1158bd18fee05d1bde890
         </http>
       </request>
 
       <!-- wait for match decision then logout -->
-      <thinktime value="7" random="true"></thinktime>
+      <thinktime value="5" random="true"></thinktime>
+      <request>
+        <http url="/users/sign_out" method="DELETE" version="1.1"></http>
+      </request>
     </session>
     
     <session name="check-for-match" probability="50" type="ts_http">
       <!-- go to landing page -->
       <request>
-        <http url="/" version="1.1" method="GET"></http>
+        <http url="/" method="GET" version="1.1"></http>
       </request>
 
       <!-- go to login page -->
       <request>
         <http url="/sign_in" method="GET" version="1.1"></http>
       </request>
-      
+
+      <!-- go to dashboard -->
+      <request>
+        <http method="GET" url="/dashboard" version="1.1"></http>
+      </request>   
+         
       <!-- read match/no match info and then logout -->
       <thinktime value="10" random="true"></thinktime>
+      <request>
+        <http url="/users/sign_out" method="DELETE" version="1.1"></http>
+      </request>      
     </session>
   </sessions>
 </tsung>
