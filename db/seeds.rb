@@ -7,16 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #populate with fake matches
-Match.create(user1Id: 2, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
-Match.create(user1Id: 3, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
-Match.create(user1Id: 4, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
-Match.create(user1Id: 5, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
-Match.create(user1Id: 6, user2Id: nil, status: "pending", tuesdayStartTime: 0, tuesdayEndTime: 300)
+Match.create(user1Id: 3, user2Id: nil, status: "pending", saturdayStartTime: 0, saturdayEndTime: 300)
+Match.create(user1Id: 4, user2Id: nil, status: "pending", sundayStartTime: 0, sundayEndTime: 300)
+Match.create(user1Id: 5, user2Id: nil, status: "pending", wednesdayStartTime: 0, wednesdayEndTime: 300)
+Match.create(user1Id: 6, user2Id: nil, status: "pending", thursdayStartTime: 0, thursdayEndTime: 300)
+Match.create(user1Id: 7, user2Id: nil, status: "pending", fridayStartTime: 0, fridayEndTime: 300)
 MatchToFood.create(matchId: 1, foodId: 2);
 MatchToFood.create(matchId: 2, foodId: 2);
 MatchToFood.create(matchId: 3, foodId: 2);
-MatchToFood.create(matchId: 4, foodId: 4);
-MatchToFood.create(matchId: 5, foodId: 4);
+MatchToFood.create(matchId: 4, foodId: 2);
+MatchToFood.create(matchId: 5, foodId: 2);
 
 #populate food table
 Food.create :name => "American"
