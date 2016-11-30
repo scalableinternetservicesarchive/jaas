@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE tsung SYSTEM "/home/ec2-user/opt/tsung-1.5.0/share/tsung/tsung-1.0.dtd">
-<tsung loglevel="info" dumptraffic="protocol">
-
+<tsung loglevel="notice" version="1.0">
   <!-- Client side setup -->
   <clients>
     <client host="localhost" use_controller_vm="true" maxusers='15000'/>
@@ -9,28 +8,24 @@
 
   <!-- Server side setup -->
   <servers>
-<<<<<<< HEAD
-    <server host="35.164.38.181" port="80" type="tcp"></server>
-=======
-    <server host="ec2-35-164-141-170.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
->>>>>>> 0759dc82d656b4f4f7bfed8da3238fafc5b208c4
+    <server host="ec2-35-165-5-164.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
     <arrivalphase phase="1" duration="30" unit="second">
-      <users arrivalrate="1" unit="second"></users>
+      <users arrivalrate="0.2" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="2" duration="30" unit="second">
-      <users arrivalrate="2" unit="second"></users>
+      <users arrivalrate="0.5" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="3" duration="30" unit="second">
-      <users arrivalrate="4" unit="second"></users>  
+      <users arrivalrate="1" unit="second"></users>  
     </arrivalphase>  
     <arrivalphase phase="4" duration="30" unit="second">
-      <users arrivalrate="8" unit="second"></users>  
+      <users arrivalrate="2" unit="second"></users>  
     </arrivalphase>  
     <arrivalphase phase="5" duration="30" unit="second">
-      <users arrivalrate="16" unit="second"></users>  
+      <users arrivalrate="4" unit="second"></users>  
     </arrivalphase>   
   </load>
 
@@ -94,37 +89,14 @@
       </setdynvars>
       <setdynvars sourcetype="random_number" start="1" end="13">
         <var name="cuisines1"/>
-<<<<<<< HEAD
         <var name="cuisines2"/>        
-=======
-        <var name="cuisines2"/>
-        <var name="cuisines3"/>
->>>>>>> e79a49df02aacf1b24e1158bd18fee05d1bde890
       </setdynvars>
 
       <request subst="true">
         <http method="POST"
           url="/match_request"
           version="1.1"
-<<<<<<< HEAD
           contents="mondayAvailable=true&amp;mondayTimes%5B0%5D=%%_mon_start%%&amp;mondayTimes%5B1%5D=%%_mon_end%%&amp;tuesdayAvailable=true&amp;tuesdayTimes%5B0%5D=%%_tues_start%%&amp;mondayTimes%5B1%5D=%%_tues_end%%&amp;wednesdayAvailable=true&amp;wednesdayTimes%5B0%5D=%%_wedn_start%%&amp;wednesdayTimes%5B1%5D=%%_wedn_end%%&amp;thursdayAvailable=true&amp;thursdayTimes%5B0%5D=%%_thur_start%%&amp;thursdayTimes%5B1%5D=%%_thur_end%%&amp;fridayAvailable=true&amp;fridayTimes%5B0%5D=%%_fri_start%%&amp;fridayTimes%5B1%5D=%%_fri_end%%&amp;saturdayAvailable=true&amp;saturdayTimes%5B0%5D=%%_sat_start%%&amp;saturdayTimes%5B1%5D=%%_sat_end%%&amp;sundayAvailable=true&amp;sundayTimes%5B0%5D=%%_sun_start%%&amp;sundayTimes%5B1%5D=%%_sun_end%%&amp;cuisines%5B%5D=%%_cuisines1%%&amp;cuisines%5B%5D=%%_cuisines2%%">
-=======
-          contents="mondayAvailable=true&amp;
-          mondayTimes%5B0%5D=%%_mon_start%%&amp;mondayTimes%5B1%5D=%%_mon_end%%&amp;
-          tuesdayAvailable=true&amp;
-          tuesdayTimes%5B0%5D=%%_tues_start%%&amp;mondayTimes%5B1%5D=%%_tues_end%%&amp;
-          wednesdayAvailable=true&amp;
-          wednesdayTimes%5B0%5D=%%_wedn_start%%&amp;wednesdayTimes%5B1%5D=%%_wedn_end%%&amp;
-          thursdayAvailable=true&amp;
-          thursdayTimes%5B0%5D=%%_thur_start%%&amp;thursdayTimes%5B1%5D=%%_thur_end%%&amp;
-          fridayAvailable=true&amp;
-          fridayTimes%5B0%5D=%%_fri_start%%&amp;fridayTimes%5B1%5D=%%_fri_end%%&amp;
-          saturdayAvailable=true&amp;
-          saturdayTimes%5B0%5D=%%_sat_start%%&amp;saturdayTimes%5B1%5D=%%_sat_end%%&amp;
-          sundayAvailable=true&amp;
-          sundayTimes%5B0%5D=%%_sun_start%%&amp;sundayTimes%5B1%5D=%%_sun_end%%&amp;
-          cuisines%5B0%5D=%%_cuisines1%%&amp;cuisines%5B1%5D=%%_cuisines2%%&amp;cuisines%5B2%5D=%%_cuisines3%%">
->>>>>>> e79a49df02aacf1b24e1158bd18fee05d1bde890
         </http>
       </request>
 
