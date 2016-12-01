@@ -8,7 +8,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-35-165-5-164.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-35-163-167-32.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
