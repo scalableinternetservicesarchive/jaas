@@ -8,7 +8,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-35-163-167-32.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-35-165-24-50.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
@@ -106,52 +106,52 @@
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
+      </request>   
       
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
+      </request>   
       
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
+      </request>   
       
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
+      </request>   
       
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
+      </request>   
       
       <!-- log out -->
       <request>
@@ -173,9 +173,9 @@
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
       </request>
@@ -183,43 +183,43 @@
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
+      </request>   
       
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
+      </request>   
       
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
+      </request>   
       
       <!-- go to dashboard -->
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>  
+      </request>   
       
-      <!-- go to user-edit -->
+      <!-- go to user edit -->
       <request>
         <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
-         
+      </request>   
+      
       <!-- read match/no match info and then logout -->
       <thinktime value="10" random="true"></thinktime>
       <request>
