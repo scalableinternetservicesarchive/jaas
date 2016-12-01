@@ -7,9 +7,9 @@ class MatchesController < ApplicationController
     if @current_match == nil #user logs in after sunday and all old matches have been archived
       make_match
     elsif @current_match.status=='finished'
-    	match_found
+      match_found
     else
-    	match_not_found
+      match_not_found
     end
   end
 
@@ -19,93 +19,97 @@ class MatchesController < ApplicationController
   end
 
   def match_found
-    @other_user = @current_match.user1Id == current_user.id ? User.find(@current_match.user2Id) : User.find(@current_match.user1Id)
+    if stale? (@current_match)
+      @other_user = @current_match.user1Id == current_user.id ? User.find(@current_match.user2Id) : User.find(@current_match.user1Id)
 
-    if @current_match.mondayStartTime != nil
-      @mondayStartTime = minutesToTime(@current_match.mondayStartTime)
-      @mondayEndTime = minutesToTime(@current_match.mondayEndTime)
-    end
-    if @current_match.tuesdayStartTime != nil
-      @tuesdayAvailable = true
-      @tuesdayStartTime = minutesToTime(@current_match.tuesdayStartTime)
-      @tuesdayEndTime = minutesToTime(@current_match.tuesdayEndTime)
-    end
-    if @current_match.wednesdayStartTime != nil
-      @wednesdayAvailable = true
-      @wednesdayStartTime = minutesToTime(@current_match.wednesdayStartTime)
-      @wednesdayEndTime = minutesToTime(@current_match.wednesdayEndTime)
-    end
-    if @current_match.thursdayStartTime != nil
-      @thursdayAvailable = true
-      @thursdayStartTime = minutesToTime(@current_match.thursdayStartTime)
-      @thursdayEndTime = minutesToTime(@current_match.thursdayEndTime)
-    end
-    if @current_match.fridayStartTime != nil
-      @fridayAvailable = true
-      @fridayStartTime = minutesToTime(@current_match.fridayStartTime)
-      @fridayEndTime = minutesToTime(@current_match.fridayEndTime)
-    end
-    if @current_match.saturdayStartTime != nil
-      @saturdayStartTime = minutesToTime(@current_match.saturdayStartTime)
-      @saturdayEndTime = minutesToTime(@current_match.saturdayEndTime)
-    end
-    if @current_match.sundayStartTime != nil
-      @sundayAvailable = true
-      @sundayStartTime = minutesToTime(@current_match.sundayStartTime)
-      @sundayEndTime = minutesToTime(@current_match.sundayEndTime)
-    end
+      if @current_match.mondayStartTime != nil
+        @mondayStartTime = minutesToTime(@current_match.mondayStartTime)
+        @mondayEndTime = minutesToTime(@current_match.mondayEndTime)
+      end
+      if @current_match.tuesdayStartTime != nil
+        @tuesdayAvailable = true
+        @tuesdayStartTime = minutesToTime(@current_match.tuesdayStartTime)
+        @tuesdayEndTime = minutesToTime(@current_match.tuesdayEndTime)
+      end
+      if @current_match.wednesdayStartTime != nil
+        @wednesdayAvailable = true
+        @wednesdayStartTime = minutesToTime(@current_match.wednesdayStartTime)
+        @wednesdayEndTime = minutesToTime(@current_match.wednesdayEndTime)
+      end
+      if @current_match.thursdayStartTime != nil
+        @thursdayAvailable = true
+        @thursdayStartTime = minutesToTime(@current_match.thursdayStartTime)
+        @thursdayEndTime = minutesToTime(@current_match.thursdayEndTime)
+      end
+      if @current_match.fridayStartTime != nil
+        @fridayAvailable = true
+        @fridayStartTime = minutesToTime(@current_match.fridayStartTime)
+        @fridayEndTime = minutesToTime(@current_match.fridayEndTime)
+      end
+      if @current_match.saturdayStartTime != nil
+        @saturdayStartTime = minutesToTime(@current_match.saturdayStartTime)
+        @saturdayEndTime = minutesToTime(@current_match.saturdayEndTime)
+      end
+      if @current_match.sundayStartTime != nil
+        @sundayAvailable = true
+        @sundayStartTime = minutesToTime(@current_match.sundayStartTime)
+        @sundayEndTime = minutesToTime(@current_match.sundayEndTime)
+      end
 
-    @cuisines_list = Array.new
-    MatchToFood.where(matchId: @current_match.id).find_each do |match_to_food|
-      @cuisines_list << Food.where(id: match_to_food.foodId).first.name
-    end
+      @cuisines_list = Array.new
+      MatchToFood.where(matchId: @current_match.id).find_each do |match_to_food|
+        @cuisines_list << Food.where(id: match_to_food.foodId).first.name
+      end
 
-    render 'match_found'
+      render 'match_found'
+    end
   end
 
   def match_not_found
-    @status = @current_match.status
+    if stale? (@current_match)
+      @status = @current_match.status
 
-    if @current_match.mondayStartTime != nil
-      @mondayStartTime = minutesToTime(@current_match.mondayStartTime)
-      @mondayEndTime = minutesToTime(@current_match.mondayEndTime)
-    end
-    if @current_match.tuesdayStartTime != nil
-      @tuesdayAvailable = true
-      @tuesdayStartTime = minutesToTime(@current_match.tuesdayStartTime)
-      @tuesdayEndTime = minutesToTime(@current_match.tuesdayEndTime)
-    end
-    if @current_match.wednesdayStartTime != nil
-      @wednesdayAvailable = true
-      @wednesdayStartTime = minutesToTime(@current_match.wednesdayStartTime)
-      @wednesdayEndTime = minutesToTime(@current_match.wednesdayEndTime)
-    end
-    if @current_match.thursdayStartTime != nil
-      @thursdayAvailable = true
-      @thursdayStartTime = minutesToTime(@current_match.thursdayStartTime)
-      @thursdayEndTime = minutesToTime(@current_match.thursdayEndTime)
-    end
-    if @current_match.fridayStartTime != nil
-      @fridayAvailable = true
-      @fridayStartTime = minutesToTime(@current_match.fridayStartTime)
-      @fridayEndTime = minutesToTime(@current_match.fridayEndTime)
-    end
-    if @current_match.saturdayStartTime != nil
-      @saturdayStartTime = minutesToTime(@current_match.saturdayStartTime)
-      @saturdayEndTime = minutesToTime(@current_match.saturdayEndTime)
-    end
-    if @current_match.sundayStartTime != nil
-      @sundayAvailable = true
-      @sundayStartTime = minutesToTime(@current_match.sundayStartTime)
-      @sundayEndTime = minutesToTime(@current_match.sundayEndTime)
-    end
+      if @current_match.mondayStartTime != nil
+        @mondayStartTime = minutesToTime(@current_match.mondayStartTime)
+        @mondayEndTime = minutesToTime(@current_match.mondayEndTime)
+      end
+      if @current_match.tuesdayStartTime != nil
+        @tuesdayAvailable = true
+        @tuesdayStartTime = minutesToTime(@current_match.tuesdayStartTime)
+        @tuesdayEndTime = minutesToTime(@current_match.tuesdayEndTime)
+      end
+      if @current_match.wednesdayStartTime != nil
+        @wednesdayAvailable = true
+        @wednesdayStartTime = minutesToTime(@current_match.wednesdayStartTime)
+        @wednesdayEndTime = minutesToTime(@current_match.wednesdayEndTime)
+      end
+      if @current_match.thursdayStartTime != nil
+        @thursdayAvailable = true
+        @thursdayStartTime = minutesToTime(@current_match.thursdayStartTime)
+        @thursdayEndTime = minutesToTime(@current_match.thursdayEndTime)
+      end
+      if @current_match.fridayStartTime != nil
+        @fridayAvailable = true
+        @fridayStartTime = minutesToTime(@current_match.fridayStartTime)
+        @fridayEndTime = minutesToTime(@current_match.fridayEndTime)
+      end
+      if @current_match.saturdayStartTime != nil
+        @saturdayStartTime = minutesToTime(@current_match.saturdayStartTime)
+        @saturdayEndTime = minutesToTime(@current_match.saturdayEndTime)
+      end
+      if @current_match.sundayStartTime != nil
+        @sundayAvailable = true
+        @sundayStartTime = minutesToTime(@current_match.sundayStartTime)
+        @sundayEndTime = minutesToTime(@current_match.sundayEndTime)
+      end
 
-    @cuisines_list = Array.new
-    MatchToFood.where(matchId: @current_match.id).find_each do |match_to_food|
-      @cuisines_list << Food.where(id: match_to_food.foodId).first.name
-    end
+      @cuisines_list = Array.new
+      MatchToFood.where(matchId: @current_match.id).find_each do |match_to_food|
+        @cuisines_list << Food.where(id: match_to_food.foodId).first.name
+      end
 
-    render 'match_not_found'
+      render 'match_not_found'
+    end
   end
 
   def match_request
