@@ -1,4 +1,5 @@
 <div class="container">
+	<% cache(cache_key_for_match_not_found(@current_match)) do %>
 	<div class="jumbotron pulsebg" style="text-align:center;">
 		<h2> Sorry, you currently don't have any matches! ☹</h2>
 		<h4> Check back soon! 😄</h4>
@@ -65,5 +66,6 @@
 		class:"btn match-button hvr-outline-out", style: 'width: auto', title:"Make a new match for next week!",
 		data: {toggle: 'tooltip', placement: 'left'})%>
 		<%end%>
-	</div>			
+	</div>
+	<% end %>
 </div>
