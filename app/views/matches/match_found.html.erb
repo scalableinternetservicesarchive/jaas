@@ -1,4 +1,5 @@
 <div class="container">
+	<% cache(cache_key_for_submission_row(@current_match)) do %>
 	<div class="panel panel-default">
 		<div class="panel-heading text-center pulsebg">
 			<b id="yourMatch"> YOUR MATCH! </b>
@@ -74,4 +75,5 @@
 		data: {toggle: 'tooltip', placement: 'left'})%>
 		<%end%>
 	</div>	
+	<% end %>
 </div>
