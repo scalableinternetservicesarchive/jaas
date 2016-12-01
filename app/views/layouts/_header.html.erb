@@ -3,9 +3,9 @@
       <div class="container">
         <div class="navbar-header">
           <% if !current_page?(root_path) %>
-            <%= link_to 'Stranger Arranger', root_path, id:"header-logo", class:"navbar-brand" %>
+            <%= link_to 'Stranger Arranger', root_path, id:"header-logo", class:"navbar-brand hvr-underline-from-center" %>
           <% else %>
-            <p class="navbar-brand noselect">Stranger Arranger</p>
+            <p id="header-logo" class="navbar-brand noselect">Stranger Arranger</p>
           <% end %>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
             <span class="sr-only"> Toggle navigation</span>

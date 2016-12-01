@@ -1,60 +1,60 @@
 <div class="container">
-	<div class="jumbotron" style="background-color: #252120;">
-		<h1> Sorry, you currently don't have any matches!</h1>
-		<h4> Check back soon! :) </h4>
+	<div class="jumbotron pulsebg" style="text-align:center;">
+		<h2> Sorry, you currently don't have any matches! ☹</h2>
+		<h4> Check back soon! 😄</h4>
 	</div>
-	<div>
+	<div style="text-align:center;">
 		<% if @current_match.status == 'pending' %>
 			Your request details:
 		<% else %>
 			Your next week's request details:
 		<% end %>
-		<br/>
-		<p>Availability:</p>
+		<div></div>
+		<p style="margin-top:10px;">Availability:</p>
 		<%=
 			if !@current_match.mondayStartTime.nil?
 				monday = "Monday: #{@mondayStartTime} - #{@mondayEndTime}"
-				content_tag(:div, monday, class:"col-sm-12")
+				content_tag(:div, monday, class:"")
 			end
 		%>
 		<%=
 			if !@current_match.tuesdayStartTime.nil?
 				tuesday = "Tuesday: #{@tuesdayStartTime} - #{@tuesdayEndTime}"
-				content_tag(:div, tuesday, class:"col-sm-12")
+				content_tag(:div, tuesday, class:"")
 			end
 		%>
 		<%=
 			if !@current_match.wednesdayStartTime.nil?
 				wednesday = "Wednesday: #{@wednesdayStartTime} - #{@wednesdayEndTime}"
-				content_tag(:div, wednesday, class:"col-sm-12")
+				content_tag(:div, wednesday, class:"")
 			end
 		%>
 		<%=
 			if !@current_match.thursdayStartTime.nil?
 				thursday = "Thursday: #{@thursdayStartTime} - #{@thursdayEndTime}"
-				content_tag(:div, thursday, class:"col-sm-12")
+				content_tag(:div, thursday, class:"")
 			end
 		%>
 		<%=
 			if !@current_match.fridayStartTime.nil?
 				friday = "Friday: #{@fridayStartTime} - #{@fridayEndTime}"
-				content_tag(:div, friday, class:"col-sm-12")
+				content_tag(:div, friday, class:"")
 			end
 		%>
 		<%=
 			if !@current_match.saturdayStartTime.nil?
 				saturday = "Saturday: #{@saturdayStartTime} - #{@saturdayEndTime}"
-				content_tag(:div, saturday, class:"col-sm-12")
+				content_tag(:div, saturday, class:"")
 			end
 		%>
 		<%=
 			if !@current_match.sundayStartTime.nil?
 				sunday = "Sunday: #{@sundayStartTime} - #{@sundayEndTime}"
-				content_tag(:div, sunday, class:"col-sm-12")
+				content_tag(:div, sunday, class:"")
 			end
 		%>
-		<br/>
-		<p>Cuisines:</p>
+		<div></div>
+		<p style="margin-top:10px;">Cuisines:</p>
 		<% @cuisines_list.each do |cuisine| %>
 				<%= cuisine %><br/>
 		<% end %>
