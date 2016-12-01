@@ -3,11 +3,9 @@
 one:
   user1Id: 1
   user2Id: 1
-  time: MyString
   status: MyString
 
 two:
   user1Id: 1
   user2Id: 1
-  time: MyString
   status: MyString

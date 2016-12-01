@@ -5,7 +5,7 @@ class MatchTest < ActiveSupport::TestCase
   #   assert true
   # end
   	def setup
-  		@match = Match.new(user1Id: 1, user2Id: 1, time: "1", status: "pending")
+  		@match = Match.new(user1Id: 1, user2Id: 1, status: "pending")
   		@user = User.find_by(id: 1)
 	end
 
