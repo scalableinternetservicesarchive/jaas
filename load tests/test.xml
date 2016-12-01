@@ -8,30 +8,24 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-35-163-194-83.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-35-165-5-164.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
     <arrivalphase phase="1" duration="30" unit="second">
-      <users arrivalrate="2" unit="second"></users>
+      <users arrivalrate="0.2" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="2" duration="30" unit="second">
-      <users arrivalrate="4" unit="second"></users>
+      <users arrivalrate="0.5" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="3" duration="30" unit="second">
-      <users arrivalrate="8" unit="second"></users>  
+      <users arrivalrate="1" unit="second"></users>  
     </arrivalphase>  
     <arrivalphase phase="4" duration="30" unit="second">
-      <users arrivalrate="16" unit="second"></users>  
+      <users arrivalrate="2" unit="second"></users>  
     </arrivalphase>  
     <arrivalphase phase="5" duration="30" unit="second">
-      <users arrivalrate="32" unit="second"></users>  
-    </arrivalphase>
-    <arrivalphase phase="6" duration="30" unit="second">
-      <users arrivalrate="64" unit="second"></users>  
-    </arrivalphase>  
-    <arrivalphase phase="7" duration="30" unit="second">
-      <users arrivalrate="128" unit="second"></users>  
+      <users arrivalrate="4" unit="second"></users>  
     </arrivalphase>   
   </load>
 
@@ -106,60 +100,8 @@
         </http>
       </request>
 
-      <!-- wait for match decision -->
+      <!-- wait for match decision then logout -->
       <thinktime value="5" random="true"></thinktime>
-      
-      <!-- go to dashboard -->
-      <request>
-        <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>   
-      
-      <!-- go to dashboard -->
-      <request>
-        <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>   
-      
-      <!-- go to dashboard -->
-      <request>
-        <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>   
-      
-      <!-- go to dashboard -->
-      <request>
-        <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>   
-      
-      <!-- go to dashboard -->
-      <request>
-        <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>   
-      
-      <!-- log out -->
       <request>
         <http url="/users/sign_out" method="DELETE" version="1.1"></http>
       </request>
@@ -180,52 +122,7 @@
       <request>
         <http method="GET" url="/dashboard" version="1.1"></http>
       </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>
-      
-      <!-- go to dashboard -->
-      <request>
-        <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>   
-      
-      <!-- go to dashboard -->
-      <request>
-        <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>   
-      
-      <!-- go to dashboard -->
-      <request>
-        <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>   
-      
-      <!-- go to dashboard -->
-      <request>
-        <http method="GET" url="/dashboard" version="1.1"></http>
-      </request>   
-      
-      <!-- go to user edit -->
-      <request>
-        <http method="GET" url="/users/edit" version="1.1"></http>
-      </request>   
-      
+         
       <!-- read match/no match info and then logout -->
       <thinktime value="10" random="true"></thinktime>
       <request>
