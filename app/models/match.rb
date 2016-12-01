@@ -10,9 +10,8 @@ class Match < ApplicationRecord
     logger.debug "foods is : #{foods}"
     food_filter = "match_to_foods.foodId = " + foods[0].to_s
     foods[1..-1].each do |food|
-      food_filter << " OR match_to_foods.foodId = " + food.to_s
+    food_filter << " OR match_to_foods.foodId = " + food.to_s
     end
     logger.debug "food_filter is: #{food_filter}"
     joins("INNER JOIN match_to_foods ON match_to_foods.matchId = matches.id AND (" + food_filter + ")")
-  end
 end
